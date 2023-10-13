@@ -5,7 +5,7 @@ import * as Font from 'expo-font';
 const Arrival = () => {
 
     const [fontLoaded, setFontLoaded] = useState(false);
-    const [selectedItem, setSelectedItem] = useState(0);
+    const [selectedItem, setSelectedItem] = useState(1);
 
     const menuItems = [
       { id: 1, label: 'All' },
@@ -49,10 +49,9 @@ const Arrival = () => {
                   onPress={() => handleMenuItemClick(item.id)}
                   style={[
                     styles.arrivalList,
-                    selectedItem === item.id && styles.selectedArrivalList,
                   ]}
                 >
-                  <Text>{item.label}</Text>
+                  <Text style={[styles.arrivalHead, selectedItem === item.id && styles.selectedArrivalList ]}>{item.label}</Text>
                 </TouchableOpacity>
               ))}
             </View>
@@ -74,16 +73,25 @@ const styles = StyleSheet.create({
         marginTop: -20
     },
     arrivalList: {
+      marginBottom: 10
+    },
+    arrivalHead: {
       fontFamily: "TenorSans",
       fontSize: 14,
       marginRight: 16,
       marginBottom: 16,
       color: "#9E9E9E",
     },
+
     selectedArrivalList: {
-      color: "black",
-      borderBottomWidth: 2,
-      borderBottomColor: '#DD8560', // Adjust color as needed
+      color: "#000000",
+      borderBottomWidth: 3,
+      borderBottomColor: '#DD8560',
+      paddingBottom: 5,
+      borderBottomEndRadius: 50,
+      borderBottomLeftRadius: 50,
+      borderBottomRightRadius: 50,
+      borderBottomStartRadius: 50
     },
 })
 
