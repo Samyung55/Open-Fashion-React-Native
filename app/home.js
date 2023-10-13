@@ -1,13 +1,15 @@
-import { Text, Image, View } from "react-native";
+import { Text, Image, View, ScrollView } from "react-native";
 import Navbar from "../components/Navbar/Navbar"
 import Hero from "../components/Hero/Hero";
+import Arrival from "../components/Arrival/Arrival";
 
 const Home = () => {
     return (
-        <View style={{ flex: 1 }}>
+        <ScrollView style={{ flex: 1 }}>
         <Navbar />
         <Hero />
-        </View>
+        <Arrival />
+        </ScrollView>
     )
 }
 
