@@ -1,5 +1,12 @@
 import { Redirect } from "expo-router";
 
+import { ProductContextProvider } from "../contexts/productContext"
+
+
 export default function Index() {
-    return <Redirect href="/home" />;
+    return (
+        <ProductContextProvider>
+    <Redirect href="/home" />
+    </ProductContextProvider>
+    )
 }
