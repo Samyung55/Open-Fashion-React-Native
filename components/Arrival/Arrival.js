@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
         padding: 20,
         alignSelf: "center",
         marginTop: 30,
+        letterSpacing: 5,
     },
     borderImg: {
         marginBottom: 30,
