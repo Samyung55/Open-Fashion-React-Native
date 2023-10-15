@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, FlatList } from "react-native";
 import * as Font from 'expo-font';
 import { ProductContext } from "../../contexts/productContext";
 
@@ -29,15 +29,15 @@ const Collection = () => {
     return (
         <>
         <View style={styles.container}>
-            <Text style={{ fontFamily: "TenorSans", fontSize: 18, color: "#202224"}}>
+            <Text style={{ fontFamily: "TenorSans", fontSize: 18, color: "#202224", letterSpacing: 5,}}>
                 COLLECTIONS
             </Text>
             <Image style={{ marginTop: 28, width: 400, height: 250 }} source={require("../../assets/collection.png")} />
-            <Image style={{ marginTop: 48 }} source={require("../../assets/autumn.png")} />
-            <Image style={{ marginTop: 48, width: 400 }} source={require("../../assets/video.png")} />
+            <Image style={{ marginTop: 48, height: 300, width: 300 }} source={require("../../assets/autumn.png")} />
+            <Image style={{ marginTop: 48, width: 400, height: 200 }} source={require("../../assets/video.png")} />
         </View>
         <View style={styles.container}>
-        <Text style={{ fontFamily: "TenorSans", fontSize: 20, color: "#202224", marginTop: 35}}>
+        <Text style={{ fontFamily: "TenorSans", fontSize: 20, color: "#202224", marginTop: 35, letterSpacing: 5,}}>
                 JUST FOR YOU
         </Text>
         <Image style={{ marginTop: 2,  marginBottom: 35 }} source={require("../../assets/3.png")}/>
@@ -75,6 +75,18 @@ const Collection = () => {
                         ]}
                     />
                 ))}
+            </View>
+            <View>
+                <Text style={{ marginTop: 30, fontFamily: "TenorSans", fontSize: 20, marginBottom: 20, letterSpacing: 8, textAlign: "center" }}>@TRENDING</Text>
+                <View style={styles.trendingcontainer}>
+                    <Text style={styles.trending}>#collection</Text>
+                    <Text style={styles.trending}>#spring</Text>
+                    <Text style={styles.trending}>#2023</Text>
+                    <Text style={styles.trending}>#fall</Text>
+                    <Text style={styles.trending}>#dress</Text>
+                    <Text style={styles.trending}>#autumncollection</Text>
+                    <Text style={styles.trending}>#openfashion</Text>
+                </View>
             </View>
         </>
     )
@@ -133,6 +145,21 @@ const styles = StyleSheet.create({
         borderColor: "#9F9E9E",
         borderCurve: 30
     },
+    trendingcontainer: {
+        justifyContent: "center",
+        alignItems: "start",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        width: 350,
+        marginLeft: 30,
+        marginBottom: 20
+    },
+    trending: {
+        marginRight: 25,
+        lineHeight: 30,
+        textAlign: "left",
+        fontFamily: "TenorSans"
+    }
 })
 
 export default Collection
