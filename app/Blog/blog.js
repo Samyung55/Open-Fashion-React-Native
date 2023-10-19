@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity, Modal } from "react-native";
 import * as Font from 'expo-font';
 import Navbar from "../../components/Navbar/Navbar";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
@@ -11,13 +11,18 @@ import { LinearGradient } from 'expo-linear-gradient';
 const BlogScreen = ({ navigation }) => {
   const [fontLoaded, setFontLoaded] = useState(false);
   const [selectedItem, setSelectedItem] = useState(1);
-
+  const [isMenuVisible, setMenuVisible] = useState(false);
   const { blogs, setBlogs } = useContext(ProductContext);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const handleMenuItemClick = (item) => {
     setSelectedItem(item);
   };
+
+  const toggleMenu = () => {
+    setMenuVisible(!isMenuVisible);
+  };
+
 
  const menuItems = [
     { id: 1, label: 'Fashion' },
@@ -68,12 +73,11 @@ const BlogScreen = ({ navigation }) => {
         
         {/* Navbar */}
       <View style={styles.container}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={toggleMenu}>
             <Image style={{ width: 35, height: 27, marginLeft: -10 }} source={require("../../assets/menu.png")} />
         </TouchableOpacity>
-        
             <Image style={{ width: 100, height: 40, marginLeft: 70, marginRight: 20  }} source={require("../../assets/open.png")} />
-        
+           
         <TouchableOpacity>
         <Image style={{ width: 25, height: 25, marginLeft: 40  }} source={require("../../assets/search.png")} />
         </TouchableOpacity>
@@ -81,6 +85,22 @@ const BlogScreen = ({ navigation }) => {
         <Image style={{ width: 22, height: 25, marginLeft: 25 }} source={require("../../assets/shopping-bag.png")} />
         </TouchableOpacity>
       </View>
+
+      {/* Modal for the menu */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isMenuVisible}
+        onRequestClose={() => {
+          toggleMenu();
+        }}
+      >
+        <View style={styles.menu}>
+          <TouchableOpacity onPress={toggleMenu}>
+            <Image style={{width:40, height: 40, marginTop: -30 }} source={require("../../assets/Close.png")} />
+          </TouchableOpacity>
+        </View>
+      </Modal>
 
       {/* Menu Lists */}
       <View>
@@ -276,7 +296,13 @@ blogFooter: {
     flexDirection: "row",
     marginLeft: 20,
     justifyContent: "space-between"
-}
+},
+menu: {
+  flex: 1,
+  backgroundColor: "white", // Change this to your menu background color
+  paddingTop: 50,
+  paddingHorizontal: 20,
+},
 });
 
 
