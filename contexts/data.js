@@ -7,6 +7,11 @@ const slide1 = require("../assets/products/harris.png")
 const slide2 = require("../assets/products/cashmere.png")
 const slide3 = require("../assets/products/harris2.png")
 
+const blog1 = require("../assets/blogs/blog1.png")
+const blog2 = require("../assets/blogs/blog2.png")
+const blog3 = require("../assets/blogs/blog3.png")
+const blog4 = require("../assets/blogs/blog4.png")
+
 export const arrivalData = [
     {
         id: 1,
@@ -94,5 +99,56 @@ export const foryouData = [
         price: "$120",
         productImage: slide1,
         category: "Bag"
+    },
+]
+
+export const BlogData = [
+    {
+        id: 1,
+        title: "2021 STYLE GUIDE: THE BIGGEST FALL TRENDS",
+        tags: ["#Fashion", "   #Tips"],
+        image: blog1,
+        image2: slide3,
+        time: "2 days ago",
+        category: "Fashion",
+        description: "You guys know how much I love mixing high and low-end – it’s the best way to get the most bang for your buck while still elevating your wardrobe. The same goes for handbags! And honestly they are probably the best pieces to mix and match. I truly think the key to completing a look is with a great bag and I found so many this year that I wanted to share a round-up of my most worn handbags.",
+        description2: "I found this Saint Laurent canvas handbag this summer and immediately fell in love. The neutral fabrics are so beautiful and I like how this handbag can also carry into fall. The mini Fendi bucket bag with the sheer fabric is so fun and such a statement bag. Also this DeMellier off white bag is so cute to carry to a dinner with you or going out, it’s small but not too small to fit your phone and keys still.",
+        creator: "Sam"
+    },
+    {
+        id: 2,
+        title: "2021 STYLE GUIDE: THE BIGGEST FALL TRENDS",
+        tags: ["#Fashion", "   #Tips"],
+        image: blog2,
+        image2: slide2,
+        time: "4 days ago",
+        category: "Promo",
+        description: "You guys know how much I love mixing high and low-end – it’s the best way to get the most bang for your buck while still elevating your wardrobe. The same goes for handbags! And honestly they are probably the best pieces to mix and match. I truly think the key to completing a look is with a great bag and I found so many this year that I wanted to share a round-up of my most worn handbags.",
+        description2: "I found this Saint Laurent canvas handbag this summer and immediately fell in love. The neutral fabrics are so beautiful and I like how this handbag can also carry into fall. The mini Fendi bucket bag with the sheer fabric is so fun and such a statement bag. Also this DeMellier off white bag is so cute to carry to a dinner with you or going out, it’s small but not too small to fit your phone and keys still.",
+        creator: "Admin"
+    },
+    {
+        id: 3,
+        title: "2021 STYLE GUIDE: THE BIGGEST FALL TRENDS",
+        tags: ["#Fashion", "   #Tips"],
+        image: blog3,
+        image2: slide1,
+        time: "4 days ago",
+        category: "Policy",
+        description: "You guys know how much I love mixing high and low-end – it’s the best way to get the most bang for your buck while still elevating your wardrobe. The same goes for handbags! And honestly they are probably the best pieces to mix and match. I truly think the key to completing a look is with a great bag and I found so many this year that I wanted to share a round-up of my most worn handbags.",
+        description2: "I found this Saint Laurent canvas handbag this summer and immediately fell in love. The neutral fabrics are so beautiful and I like how this handbag can also carry into fall. The mini Fendi bucket bag with the sheer fabric is so fun and such a statement bag. Also this DeMellier off white bag is so cute to carry to a dinner with you or going out, it’s small but not too small to fit your phone and keys still.",
+        creator: "OpenFashion"
+    },
+    {
+        id: 4,
+        title: "2021 STYLE GUIDE: THE BIGGEST FALL TRENDS",
+        tags: ["#Fashion", "   #Tips"],
+        image: blog4,
+        image2: slide2,
+        time: "4 days ago",
+        category: "Lookbook",
+        description: "You guys know how much I love mixing high and low-end – it’s the best way to get the most bang for your buck while still elevating your wardrobe. The same goes for handbags! And honestly they are probably the best pieces to mix and match. I truly think the key to completing a look is with a great bag and I found so many this year that I wanted to share a round-up of my most worn handbags.",
+        description2: "I found this Saint Laurent canvas handbag this summer and immediately fell in love. The neutral fabrics are so beautiful and I like how this handbag can also carry into fall. The mini Fendi bucket bag with the sheer fabric is so fun and such a statement bag. Also this DeMellier off white bag is so cute to carry to a dinner with you or going out, it’s small but not too small to fit your phone and keys still.",
+        creator: "Sam"
     },
 ]
