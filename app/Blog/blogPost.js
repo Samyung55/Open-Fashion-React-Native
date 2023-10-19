@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity, Modal } from "react-native";
 import * as Font from 'expo-font';
 import { ProductContext } from "../../contexts/productContext";
 import { ScrollView } from "react-native-gesture-handler";
@@ -8,6 +8,7 @@ import { useRoute } from '@react-navigation/native';
 const BlogPost = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
 
+    const [isMenuVisible, setMenuVisible] = useState(false);
     const { blogs } = useContext(ProductContext);
 
     useEffect(() => {
@@ -26,6 +27,10 @@ const BlogPost = () => {
         return null;
     }
 
+    const toggleMenu = () => {
+        setMenuVisible(!isMenuVisible);
+      };
+
     if (!blogs || blogs.length === 0) {
         return null; 
     }
@@ -39,7 +44,7 @@ const BlogPost = () => {
         <ScrollView style={{ backgroundColor: "#FFFFFF" }}>
             {/* Navbar */}
             <View style={styles.container}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={toggleMenu}>
                     <Image style={{ width: 35, height: 27, marginLeft: -10 }} source={require("../../assets/menu.png")} />
                 </TouchableOpacity>
                 <Image style={{ width: 100, height: 40, marginLeft: 70, marginRight: 20 }} source={require("../../assets/open.png")} />
@@ -50,6 +55,22 @@ const BlogPost = () => {
                     <Image style={{ width: 22, height: 25, marginLeft: 25 }} source={require("../../assets/shopping-bag.png")} />
                 </TouchableOpacity>
             </View>
+
+            <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isMenuVisible}
+        onRequestClose={() => {
+          toggleMenu();
+        }}
+      >
+        <View style={styles.menu}>
+          <TouchableOpacity onPress={toggleMenu}>
+            <Image style={{width:40, height: 40, marginTop: -30 }} source={require("../../assets/Close.png")} />
+          </TouchableOpacity>
+        </View>
+      </Modal>
+
             {/* Blog Details */}
             <Image style={styles.blogimg} source={selectedBlog.image} />
             <Text style={styles.blogtitle}>{selectedBlog.title}</Text>
@@ -183,7 +204,13 @@ blogFooter: {
     flexDirection: "row",
     marginLeft: 20,
     justifyContent: "space-between"
-}
+},
+menu: {
+    flex: 1,
+    backgroundColor: "white", // Change this to your menu background color
+    paddingTop: 50,
+    paddingHorizontal: 20,
+  },
 })
 
 export default BlogPost
