@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Text, Image, View, ScrollView, TouchableOpacity, StyleSheet, Picker  } from "react-native";
+import { Text, Image, View, ScrollView, TouchableOpacity, StyleSheet, Modal } from "react-native";
 import * as Font from "expo-font";
-import Picker from '@react-native-picker/picker';
 
 const Menu = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
     const [selectedItem, setSelectedItem] = useState(1);
-    const [selectedValue, setSelectedValue] = useState('option1');
 
     const menuItems = [
         { id: 1, label: 'WOMEN' },
@@ -47,6 +45,8 @@ const Menu = () => {
         
         </View>
         <View style={{ flexDirection: "column",  marginLeft: 10, marginTop: 40 }} >
+        {selectedItem === 1 && (
+          <>
           <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
         <Text style={styles.menudrop}>New</Text>
         <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
@@ -55,13 +55,6 @@ const Menu = () => {
         <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
         <Text style={styles.menudrop}>Apparel</Text>
         <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-        <Picker
-        selectedValue={selectedValue}
-        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-      ><Picker.Item label="Option 1" value="option1" />
-      <Picker.Item label="Option 2" value="option2" />
-      <Picker.Item label="Option 3" value="option3" />
-    </Picker>
         </TouchableOpacity>
 
         <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
@@ -83,7 +76,80 @@ const Menu = () => {
         <Text style={styles.menudrop}>Accessories</Text>
         <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
         </TouchableOpacity>
-        </View>
+        </>
+                )}
+
+{selectedItem === 2 && (
+                <>
+                    <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+                    <Text style={styles.menudrop}>Watches</Text>
+                    <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+                    <Text style={styles.menudrop}>Sunglasses</Text>
+                    <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+                    </TouchableOpacity>
+                    
+                    <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+                    <Text style={styles.menudrop}>Leather Belt</Text>
+                    <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+                    <Text style={styles.menudrop}>Neckties</Text>
+                    <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+                    <Text style={styles.menudrop}>Cufflinks</Text>
+                    <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+                    <Text style={styles.menudrop}>Pocket Squares</Text>
+                    <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+                    </TouchableOpacity>
+                    </>
+                )}
+              
+
+                {selectedItem === 3 && (
+                   <>
+                   <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+                   <Text style={styles.menudrop}>Accessories</Text>
+                   <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+                   </TouchableOpacity>
+
+                   <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+                   <Text style={styles.menudrop}>Apparel</Text>
+                   <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+                   </TouchableOpacity>
+                   
+                   <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+                   <Text style={styles.menudrop}>Pajamas</Text>
+                   <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+                   </TouchableOpacity>
+
+                   <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+                   <Text style={styles.menudrop}>Scarves and Gloves</Text>
+                   <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+                   </TouchableOpacity>
+
+                   <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+                   <Text style={styles.menudrop}>Cufflinks</Text>
+                   <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+                   </TouchableOpacity>
+
+                   <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+                   <Text style={styles.menudrop}>Sunglasses</Text>
+                   <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+                   </TouchableOpacity>
+                   </>
+                )}
+            </View>
+      
+
 
     {/* Contact */}
     <View style={{marginTop: 20, marginLeft: 10}}>
