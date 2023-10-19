@@ -6,6 +6,7 @@ import Home from './home';
 import BlogScreen from './Blog/blog';
 import { ProductContextProvider } from "../contexts/productContext";
 import BlogPost from "./Blog/blogPost"
+import Menu from './../components/Menu/Menu';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ const AppNavigator = () => {
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Blog" component={BlogScreen} />
         <Stack.Screen name="Post" component={BlogPost} />
+        <Stack.Screen name="Menu" component={Menu} />
       </Stack.Navigator>
       </ProductContextProvider>
   );
