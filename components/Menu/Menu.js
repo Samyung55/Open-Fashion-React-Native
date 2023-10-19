@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Text, Image, View, ScrollView, TouchableOpacity, StyleSheet, Modal } from "react-native";
+import { Text, Image, View, ScrollView, TouchableOpacity, StyleSheet, Picker  } from "react-native";
 import * as Font from "expo-font";
+import Picker from '@react-native-picker/picker';
 
 const Menu = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
     const [selectedItem, setSelectedItem] = useState(1);
+    const [selectedValue, setSelectedValue] = useState('option1');
 
     const menuItems = [
         { id: 1, label: 'WOMEN' },
@@ -45,19 +47,54 @@ const Menu = () => {
         
         </View>
         <View style={{ flexDirection: "column",  marginLeft: 10, marginTop: 40 }} >
-          <TouchableOpacity>
+          <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
         <Text style={styles.menudrop}>New</Text>
+        <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
         </TouchableOpacity>
-    <Text style={styles.menudrop}>Apparel</Text>
-    <Text style={styles.menudrop}>Bag</Text>
-    <Text style={styles.menudrop}>Shoes</Text>
-    <Text style={styles.menudrop}>Beauty</Text>
-    <Text style={styles.menudrop}>Accessories</Text></View>
+        
+        <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+        <Text style={styles.menudrop}>Apparel</Text>
+        <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+        <Picker
+        selectedValue={selectedValue}
+        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+      ><Picker.Item label="Option 1" value="option1" />
+      <Picker.Item label="Option 2" value="option2" />
+      <Picker.Item label="Option 3" value="option3" />
+    </Picker>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+        <Text style={styles.menudrop}>Bags</Text>
+        <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+        <Text style={styles.menudrop}>Shoes</Text>
+        <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+        </TouchableOpacity>
+
+        <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+        <Text style={styles.menudrop}>Beauty</Text>
+        <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
+        <Text style={styles.menudrop}>Accessories</Text>
+        <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+        </TouchableOpacity>
+        </View>
 
     {/* Contact */}
     <View style={{marginTop: 20, marginLeft: 10}}>
-        <Text style={styles.menudrop}>(786) 713-8616</Text>
-        <Text style={styles.menudrop}>Store Locator</Text>
+        <Text style={styles.menudrop}> 
+        <Image style={{width: 20, height: 20, marginRight: 20 }} source={require("../../assets/Call.png")} />  
+           (786) 713-8616
+        </Text>
+        <Text style={styles.menudrop}>
+        <Image style={{width: 20, height: 20, marginRight: 20 }} source={require("../../assets/Location.png")} />
+            Store Locator
+          </Text>
     </View>
     {/* Social Icons */}
     <Image style={{ alignSelf: "center", marginTop: 10,  marginBottom: 5 }} source={require("../../assets/3.png")}/>
@@ -102,7 +139,7 @@ const styles = StyleSheet.create({
     menudrop: {
         fontFamily: "TenorSans",
         fontSize: 15,
-        marginBottom: 35
+        marginBottom: 35,
     },
     
     socials: {
