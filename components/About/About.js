@@ -3,13 +3,13 @@ import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import * as Font from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 
-const About = () => {
-    const [fontLoaded, setFontLoaded] = useState(false);
-    const navigation = useNavigation();
 
-  const navigateToBlog = () => {
-    navigation.navigate('Blog'); // Navigate to the 'Blog' screen
-  };
+import BlogScreen from '../../app/Blog/blog'; // Import the Blog.js screen
+
+
+
+const About = ({ navigation }) => {
+    const [fontLoaded, setFontLoaded] = useState(false);
 
     useEffect(() => {
         async function loadCustomFonts() {
@@ -99,20 +99,7 @@ const About = () => {
             </Text>
             <Image style={{ marginTop: 20,  marginBottom: 30, alignSelf: "center" }} source={require("../../assets/3.png")}/>
           </View>
-          <View style={{ flexDirection: "row", }}>
-            <TouchableOpacity>
-            <Text style={{ marginRight: 40, fontSize: 16, fontFamily: "TenorSans" }}>About</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-            <Text style={{ marginRight: 40, fontSize: 16, fontFamily: "TenorSans" }}>Contact</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-            <Text onPress={navigateToBlog} style={{fontSize: 16, fontFamily: "TenorSans", marginBottom: 30, }}>Blog</Text>
-            </TouchableOpacity>
-          </View>
-          <Text style={{ fontSize: 12, fontFamily: "TenorSans", marginBottom: 8, }}>
-          Copyright &copy; Samyung All Rights Reserved.
-          </Text>
+          
         </View>
     )
 }
