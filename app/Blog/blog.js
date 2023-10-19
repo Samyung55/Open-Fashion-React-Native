@@ -7,6 +7,7 @@ import BlogCard from "./BlogCard";
 import { ProductContext } from "../../contexts/productContext";
 import { ImageBackground } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
+import Menu from "../../components/Menu/Menu";
 
 const BlogScreen = ({ navigation }) => {
   const [fontLoaded, setFontLoaded] = useState(false);
@@ -98,6 +99,7 @@ const BlogScreen = ({ navigation }) => {
         <View style={styles.menu}>
           <TouchableOpacity onPress={toggleMenu}>
             <Image style={{width:40, height: 40, marginTop: -30 }} source={require("../../assets/Close.png")} />
+            <Menu />
           </TouchableOpacity>
         </View>
       </Modal>
