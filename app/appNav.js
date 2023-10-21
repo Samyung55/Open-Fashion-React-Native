@@ -7,6 +7,7 @@ import BlogScreen from './Blog/blog';
 import { ProductContextProvider } from "../contexts/productContext";
 import BlogPost from "./Blog/blogPost"
 import Menu from './../components/Menu/Menu';
+import ProductList from '../components/ProductList/ProductList';
 
 const Stack = createStackNavigator();
 
@@ -14,12 +15,13 @@ const AppNavigator = () => {
   return (
     
     <ProductContextProvider>
-      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="ProductList" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Blog" component={BlogScreen} />
         <Stack.Screen name="Post" component={BlogPost} />
         <Stack.Screen name="Menu" component={Menu} />
+        <Stack.Screen name="ProductList" component={ProductList} />
       </Stack.Navigator>
       </ProductContextProvider>
   );
