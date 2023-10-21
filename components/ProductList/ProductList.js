@@ -1,0 +1,260 @@
+import React, { useState, useEffect, useContext } from "react";
+import { Text, Image, View, ScrollView, TouchableOpacity, StyleSheet, Modal } from "react-native";
+import * as Font from "expo-font";
+import Menu from "../Menu/Menu";
+import { ProductContext } from "../../contexts/productContext";
+
+const ProductList = () => {
+    const [fontLoaded, setFontLoaded] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(1);
+    const [isMenuVisible, setMenuVisible] = useState(false);
+    const { products, setProducts } = useContext(ProductContext);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const handleMenuItemClick = (item) => {
+    setSelectedItem(item);
+  };
+
+  const pagination = [
+    { id: 1, label: '1' },
+    { id: 2, label: '2' },
+    { id: 3, label: '3' },
+    { id: 4, label: '4' },
+    { id: 5, label: '5' },
+  ]
+
+  useEffect(() => {
+    let filteredProducts = [];
+  
+    if (selectedItem === 1) {
+  
+      filteredProducts = products.slice(0, 8);
+  
+    } else {
+  
+        filteredProducts = products.slice(0, 8);
+    }
+  
+    setFilteredProducts(filteredProducts);
+  }, [selectedItem, products]);
+
+
+  useEffect(() => {
+    async function loadCustomFonts() {
+      await Font.loadAsync({
+        'BodoniModa-BoldItalic': require("../../assets/fonts/BodoniModa_28pt-BoldItalic.ttf"),
+        'TenorSans': require("../../assets/fonts/TenorSans-Regular.ttf"),
+      });
+      setFontLoaded(true);
+    }
+
+    loadCustomFonts();
+  }, []);
+
+  const toggleMenu = () => {
+    setMenuVisible(!isMenuVisible);
+  };
+
+  if (!fontLoaded) {
+    return null;
+  }
+    return (
+        <ScrollView style={{backgroundColor: "#FFFFFF"}}>
+        
+        {/* Navbar */}
+      <View style={styles.container}>
+        <TouchableOpacity onPress={toggleMenu}>
+            <Image style={{ width: 35, height: 27, marginLeft: -10 }} source={require("../../assets/menu.png")} />
+        </TouchableOpacity>
+            <Image style={{ width: 100, height: 40, marginLeft: 70, marginRight: 20  }} source={require("../../assets/open.png")} />
+           
+        <TouchableOpacity>
+        <Image style={{ width: 25, height: 25, marginLeft: 40  }} source={require("../../assets/search.png")} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+        <Image style={{ width: 22, height: 25, marginLeft: 25 }} source={require("../../assets/shopping-bag.png")} />
+        </TouchableOpacity>
+      </View>
+
+      {/* Modal for the menu */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isMenuVisible}
+        onRequestClose={() => {
+          toggleMenu();
+        }}
+      >
+        <View style={styles.menu}>
+          <TouchableOpacity onPress={toggleMenu}>
+            <Image style={{width:40, height: 40, marginTop: -30 }} source={require("../../assets/Close.png")} />
+            <View>
+              <Menu />
+            </View>
+          </TouchableOpacity>
+        </View>
+      </Modal>
+
+      {/* List Header */}
+      <View style={styles.listHeader}>
+        <Text style={styles.listText}>4500 APPAREL</Text>
+
+        <TouchableOpacity style={{flexDirection: "row", }}>
+        <Text style={styles.listText2}>New</Text>
+        <Image style={{width: 6, height: 6, marginTop: 25,}} source={require("../../assets/Polygon.png")}/>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+        <Image style={{width: 25, height: 25, marginLeft: 35, marginTop: 18}} source={require("../../assets/grid.png")}/>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+        <Image style={{width: 25, height: 25, marginLeft: 35, marginTop: 18}}  source={require("../../assets/Filter.png")}/>
+        </TouchableOpacity>
+
+      </View>
+
+      {/* Products */}
+      {filteredProducts.map((product, index) => (
+      <View  style={{ marginTop: 30, marginLeft: 20, flexDirection: "row"}}>
+        <TouchableOpacity>
+        <Image style={{width: 110, height: 140, marginRight: 15}} source={product.image} />
+        </TouchableOpacity>
+        <View>
+            <Text style={{ fontFamily: "TenorSans", fontSize: 15, letterSpacing: 2, marginBottom: 10}}>LAMEREI</Text>
+            <Text style={{ fontFamily: "TenorSans", fontSize: 14, color: '#555555'}}>Recycle Boucle Knit Cardigan Pink</Text>
+            <Text style={styles.productPrice}>$120</Text>
+
+            <View style={{flexDirection: "row", marginTop: 10}}>
+                <Image style={{width: 15, height: 15, marginRight: 5}} source={require("../../assets/products/Star.png")} />
+                <Text style={{fontFamily: "TenorSans", fontSize: 14, color: '#555555'}}>4.8 Ratings</Text>
+            </View>
+
+            <View style={{ flexDirection: "row", marginTop: 10, }}>
+                <Text style={styles.size1}>Size</Text>
+                <TouchableOpacity style={styles.selection}>
+                    <Text style={styles.size}>S</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.selection}>
+                    <Text style={styles.size}>M</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.selection}>
+                    <Text style={styles.size}>L</Text>
+                </TouchableOpacity>
+                <Image style={{width: 22, height: 20, marginLeft: 50, alignSelf: "center"}} source={require("../../assets/products/Union.png")} />
+            </View>
+        </View>
+        
+      </View>))}
+      <View style={{ flexDirection: "row", alignSelf: "center", marginTop: 30 }}>
+       {pagination.map((item) => (
+          <TouchableOpacity
+            key={item.id}
+            onPress={() => handleMenuItemClick(item.id)}
+          >
+            <Text style={ [styles.page, selectedItem === item.id && styles.selectedpage ]}>
+              {item.label}
+            </Text>
+          </TouchableOpacity>
+        ))}
+        </View>
+      </ScrollView>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 0.08,
+      justifyContent: "center",
+      flexDirection: "row",
+      alignItems: "center",
+      padding: 15
+    },
+    text: {
+      fontSize: 16,
+      color: 'brown',
+    },
+    image1: {
+        width: 35,
+        height:35,
+        marginRight: 0,
+        marginLeft: -120
+    },
+    menu: {
+        flex: 1,
+        backgroundColor: "white",
+        paddingTop: 50,
+        paddingHorizontal: 20,
+      },
+
+      listHeader: {
+        flexDirection: "row",
+        marginLeft: 20,
+        marginTop: 10
+      },
+      listText: {
+        fontFamily: "TenorSans",
+        marginTop: 20,
+        fontSize: 15,
+        letterSpacing: 1,
+        marginRight: 10
+      },
+      listText2: {
+        fontFamily: "TenorSans",
+        marginTop: 20,
+        fontSize: 15,
+        letterSpacing: 1,
+        marginRight: 5,
+        marginLeft: 55
+      },
+      productPrice: {
+        color: "#DD8560",
+        fontFamily: "TenorSans",
+        fontSize: 16,
+        marginTop: 10
+      },
+      
+      size1: {
+        fontFamily: "TenorSans", 
+        fontSize: 14, 
+        color: '#555555', 
+        alignSelf: "center"
+      },
+
+      size: {
+        fontFamily: "TenorSans", 
+        fontSize: 13, 
+        color: '#555555', 
+        alignSelf: "center"
+      },
+
+      selection: {
+        width: 25,
+        height: 25, 
+        marginLeft: 10, 
+        borderRadius: 30, 
+        borderWidth: 0.5, 
+        borderColor: "#555555", 
+        justifyContent: "center", 
+        alignItems: "center"
+      },
+      page: {
+        padding: 5,
+        width: 28,
+        backgroundColor: "#DEDEDE",
+        marginRight: 10,
+        textAlign: "center"
+      },
+      selectedpage: {
+        padding: 5,
+        width: 28,
+        backgroundColor: "#333333",
+        marginRight: 10,
+        textAlign: "center",
+        color: "white"
+      }
+})
+
+export default ProductList
