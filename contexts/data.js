@@ -167,45 +167,101 @@ export const BlogData = [
 
 export const ProductData = [
     {
-        name: "LAMEREI",
-        desc: "Recycle Boucle Knit Cardigan Pink",
-        price: "$120",
-        ratings: "4.8",
+        name: "ELEGANT SILK DRESS",
+        desc: "Luxurious Silk Dress with Floral Embroidery",
+        price: "$199.99",
+        ratings: "4.5",
         image: list1
     },
     {
-        name: "LAMEREI",
-        desc: "Recycle Boucle Knit Cardigan Pink",
-        price: "$120",
-        ratings: "4.8",
+        name: "LEATHER CLASSIC JACKET",
+        desc: "Handcrafted Leather Jacket for Style and Durability",
+        price: "$179.99",
+        ratings: "4.7",
         image: list2
     },
     {
-        name: "LAMEREI",
-        desc: "Recycle Boucle Knit Cardigan Pink",
-        price: "$120",
-        ratings: "4.8",
+        name: "STYLISH SPORTSWEAR SET",
+        desc: "Trendy Sportswear Set for Active Lifestyles",
+        price: "$129.95",
+        ratings: "4.2",
         image: list3
     },
     {
-        name: "LAMEREI",
-        desc: "Recycle Boucle Knit Cardigan Pink",
-        price: "$120",
-        ratings: "4.8",
+        name: "VINTAGE ANALOG WATCH",
+        desc: "Classic Analog Watch with Leather Strap",
+        price: "$89.99",
+        ratings: "4.3",
         image: list4
     },
     {
-        name: "LAMEREI",
-        desc: "Recycle Boucle Knit Cardigan Pink",
-        price: "$120",
-        ratings: "4.8",
+        name: "DESIGNER SUNGLASSES",
+        desc: "Fashionable Sunglasses with UV Protection",
+        price: "$59.99",
+        ratings: "4.6",
         image: list5
     },
     {
-        name: "LAMEREI",
-        desc: "Recycle Boucle Knit Cardigan Pink",
-        price: "$120",
-        ratings: "4.8",
+        name: "COZY KNIT SWEATER",
+        desc: "Warm and Cozy Knit Sweater for Chilly Days",
+        price: "$79.95",
+        ratings: "4.4",
         image: list6
-    }
-]
+    },
+    {
+        name: "SUEDE ANKLE BOOTS",
+        desc: "Trendy Suede Ankle Boots for Stylish Outfits",
+        price: "$139.99",
+        ratings: "4.8",
+        image: angora4
+    },
+    {
+        name: "LINEN SUMMER DRESS",
+        desc: "Breathable Linen Dress for Summer Comfort",
+        price: "$69.99",
+        ratings: "4.1",
+        image: angora1
+    },
+    {
+        name: "CLASSIC MEN'S SHIRT",
+        desc: "Timeless Men's Shirt for Formal Occasions",
+        price: "$59.95",
+        ratings: "4.0",
+        image: angora2
+    },
+    {
+        name: "LEATHER CROSSBODY BAG",
+        desc: "Chic Leather Crossbody Bag for Everyday Use",
+        price: "$119.99",
+        ratings: "4.7",
+        image: angora3
+    },
+    {
+        name: "CASUAL DENIM JEANS",
+        desc: "Comfortable Denim Jeans for Casual Wear",
+        price: "$89.95",
+        ratings: "4.2",
+        image: list3
+    },
+    {
+        name: "DESIGNER TOTE BAG",
+        desc: "Designer Tote Bag for a Stylish Statement",
+        price: "$149.99",
+        ratings: "4.6",
+        image: list4
+    },
+    {
+        name: "CLASSIC LEATHER BELT",
+        desc: "Timeless Leather Belt for a Polished Look",
+        price: "$49.99",
+        ratings: "4.3",
+        image: list5
+    },
+    {
+        name: "ELEGANT GOLD NECKLACE",
+        desc: "Elegant Gold Necklace for Special Occasions",
+        price: "$79.99",
+        ratings: "4.5",
+        image: list6
+    },
+];
