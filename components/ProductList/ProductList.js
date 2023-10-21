@@ -10,8 +10,19 @@ const ProductList = () => {
     const [isMenuVisible, setMenuVisible] = useState(false);
     const { products, setProducts } = useContext(ProductContext);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedSize, setSelectedSize] = useState(''); 
 
-  const handleMenuItemClick = (item) => {
+  
+
+  const handleSizeSelection = (size) => {
+    setSelectedSize(size);
+  };
+
+  const isSizeSelected = (size) => {
+    return size === selectedSize ? { backgroundColor: '#E0CFBA', } : {};
+  };
+  
+const handleMenuItemClick = (item) => {
     setSelectedItem(item);
   };
 
@@ -28,12 +39,29 @@ const ProductList = () => {
   
     if (selectedItem === 1) {
   
-      filteredProducts = products.slice(0, 8);
+      filteredProducts = products.slice(0, 6);
   
-    } else {
+    } 
+    
+    else if (selectedItem === 2)  {
   
-        filteredProducts = products.slice(0, 8);
+        filteredProducts = products.slice(6);
+    } 
+
+    else if (selectedItem === 3)  {
+  
+        filteredProducts = products.slice(0, 6);
     }
+
+    else if (selectedItem === 4)  {
+  
+        filteredProducts = products.slice(6);
+    } 
+
+    else if (selectedItem === 5)  {
+  
+        filteredProducts = products.slice(0, 6);
+    } 
   
     setFilteredProducts(filteredProducts);
   }, [selectedItem, products]);
@@ -116,38 +144,49 @@ const ProductList = () => {
 
       {/* Products */}
       {filteredProducts.map((product, index) => (
-      <View  style={{ marginTop: 30, marginLeft: 20, flexDirection: "row"}}>
+      <View key={index}  style={{ marginTop: 30, marginLeft: 20, flexDirection: "row"}}>
         <TouchableOpacity>
         <Image style={{width: 110, height: 140, marginRight: 15}} source={product.image} />
         </TouchableOpacity>
         <View>
-            <Text style={{ fontFamily: "TenorSans", fontSize: 15, letterSpacing: 2, marginBottom: 10}}>LAMEREI</Text>
-            <Text style={{ fontFamily: "TenorSans", fontSize: 14, color: '#555555'}}>Recycle Boucle Knit Cardigan Pink</Text>
-            <Text style={styles.productPrice}>$120</Text>
+            <Text style={{ fontFamily: "TenorSans", fontSize: 13.5, letterSpacing: 2, marginBottom: 10}}>{product.name}</Text>
+            <Text style={{ fontFamily: "TenorSans", fontSize: 11.5, color: '#555555'}}>{product.desc}</Text>
+            <Text style={styles.productPrice}>{product.price}</Text>
 
             <View style={{flexDirection: "row", marginTop: 10}}>
                 <Image style={{width: 15, height: 15, marginRight: 5}} source={require("../../assets/products/Star.png")} />
-                <Text style={{fontFamily: "TenorSans", fontSize: 14, color: '#555555'}}>4.8 Ratings</Text>
+                <Text style={{fontFamily: "TenorSans", fontSize: 14, color: '#555555'}}>{product.ratings} ratings</Text>
             </View>
 
             <View style={{ flexDirection: "row", marginTop: 10, }}>
                 <Text style={styles.size1}>Size</Text>
-                <TouchableOpacity style={styles.selection}>
-                    <Text style={styles.size}>S</Text>
-                </TouchableOpacity>
+                <TouchableOpacity
+            style={[styles.selection, isSizeSelected('S')]}
+            onPress={() => handleSizeSelection('S')}
+          >
+            <Text style={styles.size}>S</Text>
+          </TouchableOpacity>
 
-                <TouchableOpacity style={styles.selection}>
-                    <Text style={styles.size}>M</Text>
-                </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.selection, isSizeSelected('M')]}
+            onPress={() => handleSizeSelection('M')}
+          >
+            <Text style={styles.size}>M</Text>
+          </TouchableOpacity>
 
-                <TouchableOpacity style={styles.selection}>
-                    <Text style={styles.size}>L</Text>
-                </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.selection, isSizeSelected('L')]}
+            onPress={() => handleSizeSelection('L')}
+          >
+            <Text style={styles.size}>L</Text>
+          </TouchableOpacity>
                 <Image style={{width: 22, height: 20, marginLeft: 50, alignSelf: "center"}} source={require("../../assets/products/Union.png")} />
             </View>
         </View>
         
-      </View>))}
+      </View>
+      ))}
+
       <View style={{ flexDirection: "row", alignSelf: "center", marginTop: 30 }}>
        {pagination.map((item) => (
           <TouchableOpacity
@@ -160,6 +199,44 @@ const ProductList = () => {
           </TouchableOpacity>
         ))}
         </View>
+
+        <View style={styles.socials}>
+          <TouchableOpacity>
+          <Image style={styles.icons} source={require("../../assets/socials/Instagram-full.png")} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+          <Image style={styles.icons} source={require("../../assets/socials/Twitter.png")} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+          <Image style={styles.icons} source={require("../../assets/socials/YouTube.png")} />
+          </TouchableOpacity>
+          </View>
+
+        <View>
+            <Image style={{ marginTop: 2,  marginBottom: 20, alignSelf: "center" }} source={require("../../assets/3.png")}/>
+            <Text style={{ fontFamily: "TenorSans", width: 200, textAlign: "center", alignSelf: "center", lineHeight: 27 }}>
+                samyung05@gmail.com{'\n'}
+                (+234)9060177530 {'\n'}
+                08:00 - 22:00 - Everyday
+            </Text>
+            <Image style={{ marginTop: 20,  marginBottom: 30, alignSelf: "center" }} source={require("../../assets/3.png")}/>
+          </View>
+          <View style={{ justifyContent: "center", alignItems: "center"}}>
+            <View style={{ flexDirection: "row", }}>
+            <TouchableOpacity>
+            <Text style={{ marginRight: 40, fontSize: 16, fontFamily: "TenorSans" }}>About</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+            <Text style={{ marginRight: 40, fontSize: 16, fontFamily: "TenorSans" }}>Contact</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+        <Text style={{ fontSize: 16, fontFamily: "TenorSans", marginBottom: 30 }}>Blog</Text>
+      </TouchableOpacity>
+          </View>
+          <Text style={{ fontSize: 12, fontFamily: "TenorSans", marginBottom: 8, }}>
+          Copyright &copy; Samyung All Rights Reserved.
+          </Text>
+            </View>
       </ScrollView>
     )
 }
@@ -254,7 +331,20 @@ const styles = StyleSheet.create({
         marginRight: 10,
         textAlign: "center",
         color: "white"
-      }
+      },
+      socials: {
+        flexDirection: "row",
+        alignSelf: "center",
+        marginBottom: 1,
+        marginTop: 10
+      },
+      icons: {
+        marginTop: 30,
+        width: 25,
+        height: 25,
+        marginRight: 20,
+        marginBottom: 30,
+      },
 })
 
 export default ProductList
