@@ -1,16 +1,28 @@
+
+// Arrival Product Images
 const angora1 = require("../assets/products/angora1.png")
 const angora2 = require("../assets/products/angora2.png")
 const angora3 = require("../assets/products/angora3.png")
 const angora4 = require("../assets/products/angora4.png")
 
+// Slide Images
 const slide1 = require("../assets/products/harris.png")
 const slide2 = require("../assets/products/cashmere.png")
 const slide3 = require("../assets/products/harris2.png")
 
+// Blog Images
 const blog1 = require("../assets/blogs/blog1.png")
 const blog2 = require("../assets/blogs/blog2.png")
 const blog3 = require("../assets/blogs/blog3.png")
 const blog4 = require("../assets/blogs/blog4.png")
+
+// Product List Images
+const list1 = require("../assets/products/list1.png")
+const list2 = require("../assets/products/list2.png")
+const list3 = require("../assets/products/list3.png")
+const list4 = require("../assets/products/list4.png")
+const list5 = require("../assets/products/list5.png")
+const list6 = require("../assets/products/list6.png")
 
 export const arrivalData = [
     {
@@ -151,4 +163,49 @@ export const BlogData = [
         description2: "I found this Saint Laurent canvas handbag this summer and immediately fell in love. The neutral fabrics are so beautiful and I like how this handbag can also carry into fall. The mini Fendi bucket bag with the sheer fabric is so fun and such a statement bag. Also this DeMellier off white bag is so cute to carry to a dinner with you or going out, it’s small but not too small to fit your phone and keys still.",
         creator: "Sam"
     },
+]
+
+export const ProductData = [
+    {
+        name: "LAMEREI",
+        desc: "Recycle Boucle Knit Cardigan Pink",
+        price: "$120",
+        ratings: "4.8",
+        image: list1
+    },
+    {
+        name: "LAMEREI",
+        desc: "Recycle Boucle Knit Cardigan Pink",
+        price: "$120",
+        ratings: "4.8",
+        image: list2
+    },
+    {
+        name: "LAMEREI",
+        desc: "Recycle Boucle Knit Cardigan Pink",
+        price: "$120",
+        ratings: "4.8",
+        image: list3
+    },
+    {
+        name: "LAMEREI",
+        desc: "Recycle Boucle Knit Cardigan Pink",
+        price: "$120",
+        ratings: "4.8",
+        image: list4
+    },
+    {
+        name: "LAMEREI",
+        desc: "Recycle Boucle Knit Cardigan Pink",
+        price: "$120",
+        ratings: "4.8",
+        image: list5
+    },
+    {
+        name: "LAMEREI",
+        desc: "Recycle Boucle Knit Cardigan Pink",
+        price: "$120",
+        ratings: "4.8",
+        image: list6
+    }
 ]
