@@ -1,15 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { Text, Image, View, ScrollView, TouchableOpacity, StyleSheet, Modal } from "react-native";
 import * as Font from "expo-font";
+import { useNavigation } from '@react-navigation/native';
 
 const Menu = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
     const [selectedItem, setSelectedItem] = useState(1);
+    const navigation = useNavigation();
 
     const menuItems = [
         { id: 1, label: 'WOMEN' },
         { id: 2, label: 'MEN' },
         { id: 3, label: 'KIDS' }
+      ];
+
+      const womenItems = [
+        { id: 1, label: 'New' },
+        { id: 2, label: 'Apparel' },
+        { id: 3, label: 'Bags' },
+        { id: 4, label: 'Shoes' },
+        { id: 5, label: 'Beauty' },
+        { id: 6, label: 'Accessories' }
+      ];
+
+      const menItems = [
+        { id: 1, label: 'Watches' },
+        { id: 2, label: 'Sunglasses' },
+        { id: 3, label: 'Leather Belt' },
+        { id: 4, label: 'Neckties' },
+        { id: 5, label: 'Cufflinks' },
+        { id: 6, label: 'Pocket Squares' }
+      ];
+
+      const kidItems = [
+        { id: 1, label: 'Accessories' },
+        { id: 2, label: 'Apparel' },
+        { id: 3, label: 'Pajamas' },
+        { id: 4, label: 'Scarves and Gloves' },
+        { id: 5, label: 'Cufflinks' },
+        { id: 6, label: 'Sunglasses' }
       ];
 
       const handleMenuItemClick = (item) => {
@@ -46,106 +75,48 @@ const Menu = () => {
         </View>
         <View style={{ flexDirection: "column",  marginLeft: 10, marginTop: 40 }} >
         {selectedItem === 1 && (
-          <>
-          <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-        <Text style={styles.menudrop}>New</Text>
+  <>
+    {womenItems.map((item) => (
+      <TouchableOpacity
+        key={item.id}
+        onPress={() => navigation.navigate('ProductList')}
+        style={{ flexDirection: "row", justifyContent: "space-between" }}
+      >
+        <Text style={styles.menudrop}>{item.label}</Text>
         <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-        <Text style={styles.menudrop}>Apparel</Text>
-        <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-        <Text style={styles.menudrop}>Bags</Text>
-        <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-        <Text style={styles.menudrop}>Shoes</Text>
-        <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-        <Text style={styles.menudrop}>Beauty</Text>
-        <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-        <Text style={styles.menudrop}>Accessories</Text>
-        <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-        </TouchableOpacity>
-        </>
-                )}
+      </TouchableOpacity>
+    ))}
+  </>
+)}
 
 {selectedItem === 2 && (
-                <>
-                    <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-                    <Text style={styles.menudrop}>Watches</Text>
-                    <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-                    <Text style={styles.menudrop}>Sunglasses</Text>
-                    <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-                    </TouchableOpacity>
-                    
-                    <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-                    <Text style={styles.menudrop}>Leather Belt</Text>
-                    <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-                    <Text style={styles.menudrop}>Neckties</Text>
-                    <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-                    <Text style={styles.menudrop}>Cufflinks</Text>
-                    <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-                    <Text style={styles.menudrop}>Pocket Squares</Text>
-                    <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-                    </TouchableOpacity>
-                    </>
+          <>
+            {menItems.map((item) => (
+              <TouchableOpacity
+                key={item.id}
+                onPress={() => navigation.navigate('ProductList')}
+                style={{ flexDirection: "row", justifyContent: "space-between" }}
+              >
+                <Text style={styles.menudrop}>{item.label}</Text>
+                <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+              </TouchableOpacity>
+            ))}
+          </>
                 )}
               
 
                 {selectedItem === 3 && (
                    <>
-                   <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-                   <Text style={styles.menudrop}>Accessories</Text>
-                   <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-                   </TouchableOpacity>
-
-                   <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-                   <Text style={styles.menudrop}>Apparel</Text>
-                   <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-                   </TouchableOpacity>
-                   
-                   <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-                   <Text style={styles.menudrop}>Pajamas</Text>
-                   <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-                   </TouchableOpacity>
-
-                   <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-                   <Text style={styles.menudrop}>Scarves and Gloves</Text>
-                   <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-                   </TouchableOpacity>
-
-                   <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-                   <Text style={styles.menudrop}>Cufflinks</Text>
-                   <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-                   </TouchableOpacity>
-
-                   <TouchableOpacity style={{flexDirection: "row", justifyContent: "space-between"}}>
-                   <Text style={styles.menudrop}>Sunglasses</Text>
-                   <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
-                   </TouchableOpacity>
-                   </>
+                   {kidItems.map((item) => (
+                     <TouchableOpacity
+                       key={item.id}
+                       style={{ flexDirection: "row", justifyContent: "space-between" }}
+                     >
+                       <Text style={styles.menudrop}>{item.label}</Text>
+                       <Image style={{ width: 25, height: 25, marginTop: -3 }} source={require("../../assets/Forward.png")} />
+                     </TouchableOpacity>
+                   ))}
+                 </>
                 )}
             </View>
       
