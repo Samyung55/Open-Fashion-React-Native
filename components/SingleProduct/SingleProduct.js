@@ -140,6 +140,8 @@ const SingleProduct = () => {
                 <Image style={{ width: 30, height: 30 }}  source={require("../../assets/Heart.png")} />
             </TouchableOpacity>
           </TouchableOpacity>
+
+          {/* Directions */}
           <View style={{ padding: 20, marginTop: 20}}>
             <Text style={styles.textheader}>MATERIALS</Text>
             <Text style={styles.textdesc}>We work with monitoring programmes to ensure compliance with safety, health and quality standards for our products. </Text>
@@ -193,7 +195,76 @@ const SingleProduct = () => {
               <Text style={styles.direction2}>Return Policy</Text>
               </TouchableOpacity>
             </View>
+
+            <Text style={{ alignSelf: "center", fontFamily: "TenorSans", fontSize: 20, color: "#202224", marginTop: 45, letterSpacing: 3,}}>
+                YOU MAY ALSO LIKE
+        </Text>
+        <Image style={{ marginTop: 5,  marginBottom: 35, alignSelf: "center", }} source={require("../../assets/3.png")}/>
+
+        {/* Related Products */}
+        <View style={{ flexDirection: "row"}}>
+          <View style={{ marginRight: 20}}>
+          <Image style={{ width: 160, height: 200 }} source={require("../../assets/products/list4.png")}/>
+          <TouchableOpacity>
+          <Image style={{ width: 22, height: 20, marginRight: 15, alignSelf: "flex-end", marginTop: -30 }} source={require("../../assets/products/Union.png")}/>
+          </TouchableOpacity>
+
+          <Text style={{ marginTop: 10, fontFamily: "TenorSans", fontSize: 15,  }}>21WN</Text>
+          <Text style={{  fontFamily: "TenorSans", fontSize: 13, marginTop: 5 }}>reversible angora cardigan</Text>
+          <Text style={{  fontFamily: "TenorSans", fontSize: 18, marginTop: 10, color: "#DD8560" }}>$120</Text>
           </View>
+          <View>
+          <Image style={{ width: 160, height: 200 }} source={require("../../assets/products/list6.png")}/>
+          <TouchableOpacity>
+          <Image style={{ width: 22, height: 20, marginRight: 15, alignSelf: "flex-end", marginTop: -30 }} source={require("../../assets/products/Union.png")}/>
+          </TouchableOpacity>
+
+          <Text style={{ marginTop: 10, fontFamily: "TenorSans", fontSize: 15,  }}>21WN</Text>
+          <Text style={{  fontFamily: "TenorSans", fontSize: 13,  marginTop: 5 }}>reversible angora cardigan</Text>
+          <Text style={{  fontFamily: "TenorSans", fontSize: 18, marginTop: 10, color: "#DD8560" }}>$120</Text>
+          </View>
+        </View>
+
+        
+          </View>
+
+          <View style={styles.socials}>
+          <TouchableOpacity>
+          <Image style={styles.icons2} source={require("../../assets/socials/Instagram-full.png")} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+          <Image style={styles.icons2} source={require("../../assets/socials/Twitter.png")} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+          <Image style={styles.icons2} source={require("../../assets/socials/YouTube.png")} />
+          </TouchableOpacity>
+          </View>
+
+        <View>
+            <Image style={{ marginTop: 2,  marginBottom: 20, alignSelf: "center" }} source={require("../../assets/3.png")}/>
+            <Text style={{ fontFamily: "TenorSans", width: 200, textAlign: "center", alignSelf: "center", lineHeight: 27 }}>
+                samyung05@gmail.com{'\n'}
+                (+234)9060177530 {'\n'}
+                08:00 - 22:00 - Everyday
+            </Text>
+            <Image style={{ marginTop: 20,  marginBottom: 30, alignSelf: "center" }} source={require("../../assets/3.png")}/>
+          </View>
+          <View style={{ justifyContent: "center", alignItems: "center"}}>
+            <View style={{ flexDirection: "row", }}>
+            <TouchableOpacity>
+            <Text style={{ marginRight: 40, fontSize: 16, fontFamily: "TenorSans" }}>About</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+            <Text style={{ marginRight: 40, fontSize: 16, fontFamily: "TenorSans" }}>Contact</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+        <Text style={{ fontSize: 16, fontFamily: "TenorSans", marginBottom: 30 }}>Blog</Text>
+      </TouchableOpacity>
+          </View>
+          <Text style={{ fontSize: 12, fontFamily: "TenorSans", marginBottom: 8, }}>
+          Copyright &copy; Samyung All Rights Reserved.
+          </Text>
+            </View>
     </ScrollView>
   )
 }
@@ -287,6 +358,20 @@ const styles = StyleSheet.create({
         paddingBottom: 8,
         paddingTop: 7,
         
-      }
+      },
+      
+      socials: {
+        flexDirection: "row",
+        alignSelf: "center",
+        marginBottom: 1,
+        marginTop: 10
+      },
+      icons2: {
+        marginTop: 30,
+        width: 25,
+        height: 25,
+        marginRight: 20,
+        marginBottom: 20,
+      },
     })
 export default SingleProduct
