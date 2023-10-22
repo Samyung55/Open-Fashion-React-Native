@@ -140,6 +140,60 @@ const SingleProduct = () => {
                 <Image style={{ width: 30, height: 30 }}  source={require("../../assets/Heart.png")} />
             </TouchableOpacity>
           </TouchableOpacity>
+          <View style={{ padding: 20, marginTop: 20}}>
+            <Text style={styles.textheader}>MATERIALS</Text>
+            <Text style={styles.textdesc}>We work with monitoring programmes to ensure compliance with safety, health and quality standards for our products. </Text>
+            
+            <Text style={styles.textheader}>CARE</Text>
+            <Text style={styles.textdesc}>
+            To keep your jackets and coats clean, you only need to freshen them up and go over them with a cloth or a clothes brush. 
+            If you need to dry clean a garment, 
+            look for a dry cleaner that uses technologies that are respectful of the environment.
+            </Text>
+            <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 6 }}>
+              <Image style={styles.icons} source={require("../../assets/bleach.png")} />
+              <Text style={styles.direction}>Do not use bleach</Text>
+            </View>
+            
+            <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 6 }}>
+              <Image style={styles.icons} source={require("../../assets/tumble.png")} />
+              <Text style={styles.direction}>Do not tumble dry</Text>
+            </View>
+
+            <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 6 }}>
+              <Image style={styles.icons} source={require("../../assets/wash.png")} />
+              <Text style={styles.direction}>Dry clean with tetrachloroethylene</Text>
+            </View>
+            
+            <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 6 }}>
+              <Image style={styles.icons} source={require("../../assets/temp.png")} />
+              <Text style={styles.direction}>Iron at a maximum of 110ºC/230ºF</Text>
+            </View>
+
+            
+            <Text style={{ marginTop: 25, fontFamily: "TenorSans", fontSize: 19, letterSpacing: 2}}>BENEFITS</Text>
+            <View style={{ flexDirection: "row", alignItems: "center", marginTop: 15 }}>
+              <Image style={styles.icons} source={require("../../assets/Shipping.png")} />
+              <TouchableOpacity>
+              <Text style={styles.direction2}>Free Flat Rate Shipping</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={{ flexDirection: "row", alignItems: "center", marginTop: 15  }}>
+              <Image style={styles.icons} source={require("../../assets/Tag.png")} />
+              <TouchableOpacity>
+              <Text style={styles.direction2}>COD Policy 
+                </Text>
+              </TouchableOpacity>
+            </View>
+            
+            <View style={{ flexDirection: "row", alignItems: "center", marginTop: 15  }}>
+              <Image style={styles.icons} source={require("../../assets/Refresh.png")} />
+              <TouchableOpacity>
+              <Text style={styles.direction2}>Return Policy</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
     </ScrollView>
   )
 }
@@ -204,6 +258,35 @@ const styles = StyleSheet.create({
         justifyContent: "center", 
         alignItems: "center"
       },
-
+      textheader: {
+        fontFamily: "TenorSans",
+        fontSize: 18,
+        letterSpacing: 2,
+        marginBottom: 8
+      },
+      textdesc: {
+        fontFamily: "TenorSans",
+        fontSize: 17,
+        lineHeight: 27,
+        marginBottom: 30
+      },
+      icons: {
+        width: 30,
+        height: 30,
+        marginRight: 15
+      },
+      direction: {
+        fontFamily: "TenorSans",
+        fontSize: 17,
+      },
+      direction2: {
+        fontFamily: "TenorSans",
+        fontSize: 17,
+        borderBottomWidth: 0.5,
+        borderBottomColor: "#555555",
+        paddingBottom: 8,
+        paddingTop: 7,
+        
+      }
     })
 export default SingleProduct
