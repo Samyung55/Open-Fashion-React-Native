@@ -3,6 +3,7 @@ import { Text, Image, View, ScrollView, TouchableOpacity, StyleSheet, Modal } fr
 import * as Font from "expo-font";
 import Menu from "../Menu/Menu";
 import { ProductContext } from "../../contexts/productContext";
+import { useNavigation } from '@react-navigation/native';
 
 const ProductList = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
@@ -11,6 +12,8 @@ const ProductList = () => {
     const { products, setProducts } = useContext(ProductContext);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedSize, setSelectedSize] = useState(''); 
+   const navigation = useNavigation();
+
 
   
 
@@ -145,7 +148,7 @@ const handleMenuItemClick = (item) => {
       {/* Products */}
       {filteredProducts.map((product, index) => (
       <View key={index}  style={{ marginTop: 30, marginLeft: 20, flexDirection: "row"}}>
-        <TouchableOpacity>
+        <TouchableOpacity  onPress={() => navigation.navigate("SingleProduct", { selectedProductIndex: index })}>
         <Image style={{width: 110, height: 140, marginRight: 15}} source={product.image} />
         </TouchableOpacity>
         <View>
