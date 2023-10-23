@@ -86,10 +86,10 @@ useEffect(() => {
       </View>
       <View style={styles.productContainer}>
         {filteredProducts.map((product, index) => (
-          <TouchableOpacity style={styles.productRow} key={index} onPress={() => navigation.navigate("SingleProduct")}>
+          <TouchableOpacity style={styles.productRow} key={index} onPress={() => navigation.navigate("SingleArrival", { selectedProductIndex: index })}>
             <View style={styles.productColumn}>
-              <Image source={product.productImage} style={styles.productImage} />
-              <Text style={styles.productName}>{product.name}</Text>
+              <Image source={product.image} style={styles.productImage} />
+              <Text style={styles.productName}>{product.desc}</Text>
               <Text style={styles.price}>{product.price}</Text>
             </View>
           </TouchableOpacity>
