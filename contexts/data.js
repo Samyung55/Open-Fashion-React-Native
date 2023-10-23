@@ -27,58 +27,74 @@ const list6 = require("../assets/products/list6.png")
 export const arrivalData = [
     {
         id: 1,
-        name: "21WN reversible angora cardigan",
+        name: "ELEGANT SILK DRESS",
+        desc: "21WN reversible angora cardigan",
         price: "$120",
-        productImage: angora1,
-        category: "Apparel"
+        image: angora1,
+        ratings: "4.5",
+        category: "Apparel",
     },
     {
         id: 2,
-        name: "21WN reversible angora cardigan",
+        name: "ELEGANT SILK DRESS",
+        desc: "21WN reversible angora cardigan",
         price: "$120",
-        productImage: angora2,
+        image: angora2,
+        ratings: "4.5",
         category: "T-shirt"
     },
     {
         id: 3,
-        name: "21WN reversible angora cardigan",
+        name: "ELEGANT SILK DRESS",
+        desc: "21WN reversible angora cardigan",
         price: "$120",
-        productImage: angora3,
+        image: angora3,
+        ratings: "4.5",
         category: "Dress"
     },
     {
         id: 4,
-        name: "Harris Tweed Three button Jacket",
+        name: "ELEGANT SILK DRESS",
+        desc: "Harris Tweed Three button Jacket",
         price: "$120",
-        productImage: angora4,
+        image: angora4,
+        ratings: "4.5",
         category: "Bag"
     },
     {
         id: 5,
-        name: "Harris Tweed Three button Jacket",
+        name: "ELEGANT SILK DRESS",
+        desc: "Harris Tweed Three button Jacket",
         price: "$120",
-        productImage: slide1,
+        image: slide1,
+        ratings: "4.5",
         category: "Apparel"
     },
     {
         id: 6,
-        name: "Cashmere Blend Cropped Jacket SW1WJ285-AM",
+        name: "ELEGANT SILK DRESS",
+        desc: "Harris Tweed Three button Jacket",
         price: "$120",
-        productImage: slide2,
+        image: slide2,
+        ratings: "4.5",
         category: "T-shirt"
     },
     {
         id: 7,
-        name: "Harris Tweed Three-button Jacket",
+        name: "ELEGANT SILK DRESS",
+        desc: "Harris Tweed Three button Jacket",
         price: "$120",
-        productImage: slide3,
+        image: slide3,
+        ratings: "4.5",
         category: "Dress"
     },
     {
         id: 8,
-        name: "21WN reversible angora cardigan",
+        name: "ELEGANT SILK DRESS",
+        desc: "21WN reversible angora cardigan",
         price: "$120",
-        productImage: slide1,
+        ratings: "4.5",
+        image: slide1,
         category: "Bag"
     },
 ]
@@ -86,36 +102,46 @@ export const arrivalData = [
 export const foryouData = [
     {
         id: 1,
-        name: "Harris Tweed Three button Jacket",
+        name: "ELEGANT SILK DRESS",
+        desc: "Harris Tweed Three button Jacket",
         price: "$120",
-        productImage: slide1,
+        ratings: "4.5",
+        image: slide1,
         category: "Apparel"
     },
     {
         id: 2,
-        name: "Cashmere Blend Cropped Jacket SW1WJ285-AM",
+        name: "ELEGANT SILK DRESS",
+        desc: "Cashmere Blend Cropped Jacket SW1WJ285-AM",
         price: "$120",
-        productImage: slide2,
+        ratings: "4.5",
+        image: slide2,
         category: "T-shirt"
     },
     {
         id: 3,
-        name: "Harris Tweed Three-button Jacket",
+        name: "ELEGANT SILK DRESS",
+        desc: "Harris Tweed Three-button Jacket",
         price: "$120",
-        productImage: slide3,
+        ratings: "4.5",
+        image: slide3,
         category: "Dress"
     },
     {
         id: 4,
-        name: "21WN reversible angora cardigan",
+        name: "ELEGANT SILK DRESS",
+        desc: "21WN reversible angora cardigan",
         price: "$120",
-        productImage: slide1,
+        ratings: "4.5",
+        image: slide1,
         category: "Bag"
     },
 ]
 
 export const BlogData = [
+    
     {
+        
         id: 1,
         title: "2021 STYLE GUIDE: THE BIGGEST FALL TRENDS",
         tags: ["#Fashion", "   #Tips"],
