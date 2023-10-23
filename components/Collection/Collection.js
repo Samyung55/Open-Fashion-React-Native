@@ -60,7 +60,7 @@ const Collection = () => {
                 {forYou.map((product, index) => (
                     <TouchableOpacity style={styles.productRow} key={index} onPress={() => navigation.navigate("SingleForYou", { selectedProductIndex: index })}>
                        <View style={styles.productColumn}>
-                    <Image source={product.productImage} style={styles.image} />
+                    <Image source={product.image} style={styles.productImage} />
                     <Text style={styles.productName}>{product.desc}</Text>
                     <Text style={styles.price}>{product.price}</Text>
                 </View>
