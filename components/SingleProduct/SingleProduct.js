@@ -10,18 +10,20 @@ const SingleProduct = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
     const [selectedItem, setSelectedItem] = useState(1);
     const [isMenuVisible, setMenuVisible] = useState(false);
-    const { products, setProducts } = useContext(ProductContext);
+    const { products, newArrival } = useContext(ProductContext);
+    const Allproduct = [ products, newArrival ]
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedSize, setSelectedSize] = useState(''); 
   const [selectedColor, setSelectedColor] = useState(''); 
 
   
-
   const handleSizeSelection = (size) => {
     setSelectedSize(size);
   };
 
   const route = useRoute();
+  const selectedProductIndex = route.params.selectedProductIndex;
+  const selectedProduct = products[selectedProductIndex];
 
   const isSizeSelected = (size) => {
     return size === selectedSize ? { backgroundColor: 'black', } : {};
@@ -57,21 +59,21 @@ const SingleProduct = () => {
     <ScrollView style={{ backgroundColor: "#FFFFFF"}}>
         <Navbar />
     <View>
-        <Image style={{ width: 360, height: 550, marginTop: 20, alignSelf: "center" }} source={require("../../assets/single.png")} />
+        <Image style={{ width: 360, height: 550, marginTop: 20, alignSelf: "center" }} source={selectedProduct.image} />
         <TouchableOpacity>
         <Image style={{ width: 40, height: 40, marginTop: -50, alignSelf: "flex-end", marginRight: 30, marginBottom: 30 }} source={(require("../../assets/expand.png"))} />
         </TouchableOpacity>
     </View>
     <View style={{ marginLeft: 20, flexDirection: "row", justifyContent: "space-between", marginTop: 20 }}>
-        <Text style={{ fontFamily: "TenorSans", fontSize: 20, letterSpacing: 2 }}>MOHAN</Text>
+        <Text style={{ fontFamily: "TenorSans", fontSize: 20, letterSpacing: 2 }}>{selectedProduct.name}</Text>
 
         <TouchableOpacity>
         <Image style={{ width: 20, height: 20, marginRight: 20 }} source={require("../../assets/Export.png")} />
         </TouchableOpacity>
     </View>
     <View style={{ marginLeft: 20, marginBottom: 20 }}>
-    <Text style={{ fontFamily: "TenorSans", fontSize: 16, marginTop: 10  }}>Recycle Boucle Knit Cardigan Pink</Text>
-    <Text style={{ fontFamily: "TenorSans", fontSize: 18, marginTop: 10, color: "#DD8560"  }}>$120</Text>
+    <Text style={{ fontFamily: "TenorSans", fontSize: 16, marginTop: 10  }}>{selectedProduct.desc}</Text>
+    <Text style={{ fontFamily: "TenorSans", fontSize: 18, marginTop: 10, color: "#DD8560"  }}>{selectedProduct.price}</Text>
     </View>
 
     <View style={{ flexDirection: "row", marginTop: -10, marginBottom: 30 }}>
