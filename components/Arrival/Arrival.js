@@ -2,11 +2,15 @@ import React, { useState, useEffect, useContext } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import * as Font from 'expo-font';
 import { ProductContext } from "../../contexts/productContext";
+import { useNavigation } from '@react-navigation/native';
+
 
 const Arrival = () => {
   const [fontLoaded, setFontLoaded] = useState(false);
   const [selectedItem, setSelectedItem] = useState(1);
   const { newArrival, setNewArrival } = useContext(ProductContext);
+  
+  const navigation = useNavigation();
 
   const menuItems = [
     { id: 1, label: 'All' },
@@ -82,7 +86,7 @@ useEffect(() => {
       </View>
       <View style={styles.productContainer}>
         {filteredProducts.map((product, index) => (
-          <TouchableOpacity style={styles.productRow} key={index}>
+          <TouchableOpacity style={styles.productRow} key={index} onPress={() => navigation.navigate("SingleProduct")}>
             <View style={styles.productColumn}>
               <Image source={product.productImage} style={styles.productImage} />
               <Text style={styles.productName}>{product.name}</Text>
