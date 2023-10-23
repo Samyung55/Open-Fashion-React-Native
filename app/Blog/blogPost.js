@@ -4,6 +4,7 @@ import * as Font from 'expo-font';
 import { ProductContext } from "../../contexts/productContext";
 import { ScrollView } from "react-native-gesture-handler";
 import { useRoute } from '@react-navigation/native';
+import Navbar from "../../components/Navbar/Navbar";
 
 const BlogPost = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
@@ -43,33 +44,7 @@ const BlogPost = () => {
     return (
         <ScrollView style={{ backgroundColor: "#FFFFFF" }}>
             {/* Navbar */}
-            <View style={styles.container}>
-                <TouchableOpacity onPress={toggleMenu}>
-                    <Image style={{ width: 35, height: 27, marginLeft: -10 }} source={require("../../assets/menu.png")} />
-                </TouchableOpacity>
-                <Image style={{ width: 100, height: 40, marginLeft: 70, marginRight: 20 }} source={require("../../assets/open.png")} />
-                <TouchableOpacity>
-                    <Image style={{ width: 25, height: 25, marginLeft: 40 }} source={require("../../assets/search.png")} />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Image style={{ width: 22, height: 25, marginLeft: 25 }} source={require("../../assets/shopping-bag.png")} />
-                </TouchableOpacity>
-            </View>
-
-            <Modal
-        animationType="slide"
-        transparent={true}
-        visible={isMenuVisible}
-        onRequestClose={() => {
-          toggleMenu();
-        }}
-      >
-        <View style={styles.menu}>
-          <TouchableOpacity onPress={toggleMenu}>
-            <Image style={{width:40, height: 40, marginTop: -30 }} source={require("../../assets/Close.png")} />
-          </TouchableOpacity>
-        </View>
-      </Modal>
+            <Navbar />
 
             {/* Blog Details */}
             <Image style={styles.blogimg} source={selectedBlog.image} />
