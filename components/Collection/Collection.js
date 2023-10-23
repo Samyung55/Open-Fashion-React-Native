@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, FlatList } from "react-native";
 import * as Font from 'expo-font';
-import { ProductContext } from "../../contexts/productContext";
+    import { useNavigation } from '@react-navigation/native';
+    import { ProductContext } from "../../contexts/productContext";
 
 const Collection = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
     const { forYou, setForYou } = useContext(ProductContext);
     const [activeSlide, setActiveSlide] = useState(0);
+    
+  const navigation = useNavigation();
 
     useEffect(() => {
         async function loadCustomFonts() {
@@ -55,7 +58,7 @@ const Collection = () => {
                 pagingEnabled
             >
                 {forYou.map((product, index) => (
-                    <TouchableOpacity style={styles.productRow} key={index}>
+                    <TouchableOpacity style={styles.productRow} key={index} onPress={() => navigation.navigate("SingleProduct")}>
                        <View style={styles.productColumn}>
                     <Image source={product.productImage} style={styles.productImage} />
                     <Text style={styles.productName}>{product.name}</Text>
