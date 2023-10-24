@@ -1,0 +1,102 @@
+import React from 'react';
+import { View, Text, Image, Picker, TouchableOpacity } from 'react-native';
+import { useCartContext } from '../../contexts/cartContext';
+import * as cartActionTypes from '../../contexts/utils/cart';
+import { useNavigation } from '@react-navigation/native';
+
+const CartItem = () => {
+  const { cart, dispatch } = useCartContext();
+  const { cartItems } = cart;
+  const navigation = useNavigation();
+
+  if (cartItems.length === 0) {
+    return (
+      <View>
+        <Text style={{ fontFamily: "TenorSans", justifyContent: "center", alignItems: "center", marginTop: 300, marginBottom: 300 }}>You have no items in your Shopping Bag.</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('ProductList')}>
+          <Text>Continue Shopping</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  const renderItem = (cartItem) => {
+    const { id, name: productName, imageUrl, price, countInStock, quantity } = cartItem;
+
+    return (
+      <View style={styles.cartItem} key={id}>
+        <Image source={{ uri: imageUrl }} style={styles.cartItemImage} />
+
+        <TouchableOpacity onPress={() => navigation.navigate('Product', { productId: id })}>
+          <Text style={styles.cartItemName}>{productName}</Text>
+        </TouchableOpacity>
+        <Text style={styles.cartItemPrice}>${price}</Text>
+
+        <Picker
+          selectedValue={quantity}
+          style={styles.cartItemSelect}
+          onValueChange={(itemValue) => {
+            dispatch({
+              type: cartActionTypes.ADD_TO_CART,
+              payload: {
+                id,
+                name: productName,
+                imageUrl,
+                price,
+                countInStock,
+                quantity: parseInt(itemValue),
+              },
+            });
+          }}
+        >
+          {[...Array(countInStock).keys()].map((x) => (
+            <Picker.Item key={x + 1} value={x + 1} label={`${x + 1}`} />
+          ))}
+        </Picker>
+
+        <TouchableOpacity
+          style={styles.cartItemDeleteBtn}
+          onPress={() => {
+            dispatch({ type: cartActionTypes.REMOVE_FROM_CART, payload: id });
+          }}
+        >
+          <Text>Delete</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
+  return <View>{cartItems.map(renderItem)}</View>;
+};
+
+const styles = {
+  cartItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    margin: 10,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: '#ccc',
+  },
+  cartItemImage: {
+    width: 100,
+    height: 100,
+  },
+  cartItemName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  cartItemPrice: {
+    fontSize: 16,
+  },
+  cartItemSelect: {
+    width: 100,
+  },
+  cartItemDeleteBtn: {
+    backgroundColor: 'red',
+    padding: 5,
+    borderRadius: 5,
+  },
+};
+
+export default CartItem;
