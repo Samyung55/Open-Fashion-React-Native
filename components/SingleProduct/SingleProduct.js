@@ -258,7 +258,7 @@ const SingleProduct = () => {
             <Text style={{ marginRight: 40, fontSize: 16, fontFamily: "TenorSans" }}>Contact</Text>
             </TouchableOpacity>
             <TouchableOpacity>
-        <Text style={{ fontSize: 16, fontFamily: "TenorSans", marginBottom: 30 }}>Blog</Text>
+        <Text onPress={() => navigation.navigate("Blog")} style={{ fontSize: 16, fontFamily: "TenorSans", marginBottom: 30 }}>Blog</Text>
       </TouchableOpacity>
           </View>
           <Text style={{ fontSize: 12, fontFamily: "TenorSans", marginBottom: 8, }}>
