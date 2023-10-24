@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, Image, Picker, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { useCartContext } from '../../contexts/cartContext';
 import * as cartActionTypes from '../../contexts/utils/cart';
 import { useNavigation } from '@react-navigation/native';
+import { Picker } from '@react-native-picker/picker';
+
 
 const CartItem = () => {
   const { cart, dispatch } = useCartContext();
@@ -12,9 +14,11 @@ const CartItem = () => {
   if (cartItems.length === 0) {
     return (
       <View>
-        <Text style={{ fontFamily: "TenorSans", justifyContent: "center", alignItems: "center", marginTop: 300, marginBottom: 300 }}>You have no items in your Shopping Bag.</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('ProductList')}>
-          <Text>Continue Shopping</Text>
+        <Text style={styles.noitems}>You have no items in your Shopping Bag.</Text>
+        <TouchableOpacity style={{ backgroundColor: "black", padding: 25, width: 400, marginLeft: -10, flexDirection: "row", justifyContent: "center" }} 
+        onPress={() => navigation.navigate('ProductList')}>
+          <Image style={{ width: 25, height: 25, marginTop: -5, marginRight: 15}} source={require("../../assets/shopping.png")} />
+          <Text style={styles.continue}>CONTINUE SHOPPING</Text>
         </TouchableOpacity>
       </View>
     );
@@ -25,7 +29,7 @@ const CartItem = () => {
 
     return (
       <View style={styles.cartItem} key={id}>
-        <Image source={{ uri: imageUrl }} style={styles.cartItemImage} />
+        <Image source={imageUrl} style={styles.cartItemImage} />
 
         <TouchableOpacity onPress={() => navigation.navigate('Product', { productId: id })}>
           <Text style={styles.cartItemName}>{productName}</Text>
@@ -33,26 +37,26 @@ const CartItem = () => {
         <Text style={styles.cartItemPrice}>${price}</Text>
 
         <Picker
-          selectedValue={quantity}
-          style={styles.cartItemSelect}
-          onValueChange={(itemValue) => {
-            dispatch({
-              type: cartActionTypes.ADD_TO_CART,
-              payload: {
-                id,
-                name: productName,
-                imageUrl,
-                price,
-                countInStock,
-                quantity: parseInt(itemValue),
-              },
-            });
-          }}
-        >
-          {[...Array(countInStock).keys()].map((x) => (
-            <Picker.Item key={x + 1} value={x + 1} label={`${x + 1}`} />
-          ))}
-        </Picker>
+  selectedValue={quantity}
+  style={styles.cartItemSelect}
+  onValueChange={(itemValue) => {
+    dispatch({
+      type: cartActionTypes.ADD_TO_CART,
+      payload: {
+        id,
+        name: productName,
+        imageUrl,
+        price,
+        countInStock,
+        quantity: parseInt(itemValue),
+      },
+    });
+  }}
+>
+  {[...Array(countInStock).keys()].map((x) => (
+    <Picker.Item key={x + 1} value={x + 1} label={`${x + 1}`} />
+  ))}
+</Picker>
 
         <TouchableOpacity
           style={styles.cartItemDeleteBtn}
@@ -97,6 +101,19 @@ const styles = {
     padding: 5,
     borderRadius: 5,
   },
+  noitems: { 
+    fontFamily: "TenorSans", 
+    textAlign: "center", 
+    marginTop: 300, 
+    marginBottom: 300, 
+    color: "#9F9E9E" 
+},
+continue: {
+    fontFamily: "TenorSans",
+    fontSize: 16,
+    textAlign: "center",
+    color: "white"
+}
 };
 
 export default CartItem;
