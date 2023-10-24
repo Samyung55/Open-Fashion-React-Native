@@ -12,6 +12,7 @@ import SingleProduct from './../components/SingleProduct/SingleProduct';
 import SingleArrival from '../components/SingleProduct/SingleArrival';
 import SingleForYou from '../components/SingleProduct/SingleForYou';
 import Cart from './CartScreen/Cart';
+import { CartProvider } from '../contexts/cartContext';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const AppNavigator = () => {
   return (
     
     <ProductContextProvider>
+      <CartProvider>
       <Stack.Navigator initialRouteName="Cart" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="About" component={About} />
@@ -31,6 +33,7 @@ const AppNavigator = () => {
         <Stack.Screen name="SingleForYou" component={SingleForYou} />
         <Stack.Screen name="Cart" component={Cart} />
       </Stack.Navigator>
+      </CartProvider>
       </ProductContextProvider>
   );
 };
