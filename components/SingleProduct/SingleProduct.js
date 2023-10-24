@@ -5,6 +5,10 @@ import Menu from "../Menu/Menu";
 import { ProductContext } from "../../contexts/productContext";
 import Navbar from "../Navbar/Navbar";
 import { useRoute } from '@react-navigation/native';
+import { useCartContext } from "../../contexts/cartContext";
+import { ProductData } from "../../contexts/data";
+import { cartActionTypes } from "../../contexts/utils/cartActionTypes";
+
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -18,6 +22,10 @@ const SingleProduct = () => {
   const [selectedSize, setSelectedSize] = useState(''); 
   const [selectedColor, setSelectedColor] = useState(''); 
   const navigation = useNavigation();
+  const [quantity, setQuantity] = useState(1);
+
+  
+  const { dispatch: cartDispatch } = useCartContext();
 
   
   const handleSizeSelection = (size) => {
@@ -57,6 +65,34 @@ const SingleProduct = () => {
   if (!fontLoaded) {
     return null; // Wait for the font to load before rendering
   }
+
+  const addToCartHandler = async () => {
+    try {
+      // Find the selected product by ID in the ProductData array
+      const product = ProductData.find((p) => p.id === selectedProduct.id);
+  
+      if (product) {
+        cartDispatch({
+          type: cartActionTypes.ADD_TO_CART,
+          payload: {
+            id: product.id, // Use the ID from the selected product
+            name: product.name,
+            imageUrl: product.image,
+            price: product.price,
+            countInStock: 10, // You can set this to an appropriate value
+            quantity: parseInt(quantity),
+          },
+        });
+  
+        navigation.navigate('Cart');
+      } else {
+        console.log("Product not found");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
 
   return (
     <ScrollView style={{ backgroundColor: "#FFFFFF"}}>
@@ -134,7 +170,7 @@ const SingleProduct = () => {
           </View>
           </View>
 
-          <TouchableOpacity style={{ backgroundColor: "black", flexDirection: "row", justifyContent: "space-between", padding: 20}}>
+          <TouchableOpacity onPress={addToCartHandler} style={{ backgroundColor: "black", flexDirection: "row", justifyContent: "space-between", padding: 20}}>
             <View style={{ flexDirection: "row"}}>
             <Image style={{ width: 30, height: 30 }} source={require("../../assets/white.png")} />
             <Text style={{ color: "white", marginLeft: 10, fontFamily: "TenorSans", fontSize: 16, marginTop: 5 }}>ADD TO BASKET</Text>
