@@ -48,7 +48,7 @@ const Home = ({ navigation }) => {
             <Image style={{ width: 25, height: 25, marginLeft: 40 }} source={require("../assets/search.png")} />
           </TouchableOpacity>
           <TouchableOpacity>
-            <Image style={{ width: 22, height: 25, marginLeft: 25 }} source={require("../assets/shopping-bag.png")} />
+            <Image onPress={() => navigation.navigate("Cart")} style={{ width: 22, height: 25, marginLeft: 25 }} source={require("../assets/shopping-bag.png")} />
           </TouchableOpacity>
         </View>
 
