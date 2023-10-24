@@ -3,6 +3,8 @@ import { arrivalData, foryouData, BlogData, ProductData } from './data';
 
 export const ProductContext = createContext();
 
+
+
 export const ProductContextProvider = ({ children }) => {
   const [newArrival, setNewArrival] = useState(arrivalData);
   const [forYou, setForYou] = useState(foryouData);
