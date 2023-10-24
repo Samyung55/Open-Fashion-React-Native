@@ -6,6 +6,8 @@ import { ProductContext } from "../../contexts/productContext";
 import Navbar from "../Navbar/Navbar";
 import { useRoute } from '@react-navigation/native';
 
+import { useNavigation } from '@react-navigation/native';
+
 const SingleArrival = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
     const [selectedItem, setSelectedItem] = useState(1);
@@ -14,6 +16,8 @@ const SingleArrival = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedSize, setSelectedSize] = useState(''); 
   const [selectedColor, setSelectedColor] = useState(''); 
+  const navigation = useNavigation();
+  
 
   
   const handleSizeSelection = (size) => {
