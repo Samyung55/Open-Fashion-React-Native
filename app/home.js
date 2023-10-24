@@ -9,12 +9,14 @@ import About from "../components/About/About";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as Font from "expo-font";
 import Menu from "../components/Menu/Menu";
+import { useNavigation } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 
-const Home = ({ navigation }) => {
+const Home = () => {
   const [fontLoaded, setFontLoaded] = useState(false);
   const [isMenuVisible, setMenuVisible] = useState(false);
+  const navigation = useNavigation();
 
   useEffect(() => {
     async function loadCustomFonts() {
@@ -47,8 +49,8 @@ const Home = ({ navigation }) => {
           <TouchableOpacity>
             <Image style={{ width: 25, height: 25, marginLeft: 40 }} source={require("../assets/search.png")} />
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Image onPress={() => navigation.navigate("Cart")} style={{ width: 22, height: 25, marginLeft: 25 }} source={require("../assets/shopping-bag.png")} />
+          <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
+            <Image  style={{ width: 22, height: 25, marginLeft: 25 }} source={require("../assets/shopping-bag.png")} />
           </TouchableOpacity>
         </View>
 
