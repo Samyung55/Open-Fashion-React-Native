@@ -50,7 +50,7 @@ const Cart = () => {
     
           {cartItems.length > 0 && (
           <View style={styles.cartScreenRight}>
-                <Image style={{ width: 370, marginBottom: 20, height: 2 }} source={require("../../assets/line.png")} />
+                <Image style={{ width: 360, marginBottom: 20, height: 2 }} source={require("../../assets/line.png")} />
             <View style={styles.cartScreenInfo}>
               <Text style={{ fontFamily: "TenorSans", fontSize: 15}}>SUB TOTAL</Text>
               <Text style={{ color: "#DD8560", fontFamily: "TenorSans", fontSize: 17 }}>${getCartSubTotal()}</Text>
@@ -60,7 +60,7 @@ const Cart = () => {
                 shipping charges, taxes and discount codes are calculated at the time of accounting. 
                 </Text>
 
-            <TouchableOpacity style={{ backgroundColor: "black", padding: 25, width: 400, marginLeft: -10, flexDirection: "row", justifyContent: "center", marginTop: 25 }} 
+            <TouchableOpacity style={{ backgroundColor: "black", padding: 25, width: 400, marginLeft: -20, flexDirection: "row", justifyContent: "center", marginTop: 25 }} 
               onPress={() => {}}>
                 <Image style={{ width: 25, height: 25, marginTop: -5, marginRight: 15}} source={require("../../assets/shopping.png")} />
          
@@ -91,7 +91,7 @@ const Cart = () => {
       },
       cartScreenRight: {
         flex: 1,
-        padding: 10,
+        padding: 20,
         flexDirection: "column",
         marginTop: 150,
       },
