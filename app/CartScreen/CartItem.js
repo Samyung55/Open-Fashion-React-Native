@@ -5,57 +5,25 @@ import * as cartActionTypes from '../../contexts/utils/cart';
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker';
 
-const CartItemRow = ({ cartItem, quantity, increaseQuantity, decreaseQuantity }) => {
-  const { id, name: productName, desc, imageUrl, price } = cartItem;
-
-  return (
-    <View style={styles.cartItem} key={id}>
-      <Image source={imageUrl} style={styles.cartItemImage} />
-      <View style={{ flexDirection: 'column', marginLeft: 20 }}>
-        <TouchableOpacity>
-          <Text style={styles.cartItemName}>{productName}</Text>
-        </TouchableOpacity>
-        <Text style={styles.cartItemDesc}>{desc}</Text>
-
-        <View style={{ flexDirection: 'row', marginTop: 15 }}>
-          <TouchableOpacity onPress={decreaseQuantity}>
-            <Image style={{ width: 20, height: 20 }} source={require("../../assets/minus.png")} />
-          </TouchableOpacity>
-
-          <Text style={{ fontFamily: "TenorSans", fontSize: 16, marginLeft: 20, marginRight: 20 }}>{quantity}</Text>
-
-          <TouchableOpacity onPress={increaseQuantity}>
-            <Image style={{ width: 20, height: 20 }} source={require("../../assets/pluss.png")} />
-          </TouchableOpacity>
-        </View>
-
-        <Text style={styles.cartItemPrice}>${price * quantity}</Text>
-      </View>
-    </View>
-  );
-};
 
 const CartItem = () => {
   const { cart, dispatch } = useCartContext();
   const { cartItems } = cart;
-  const navigation = useNavigation();  
+  const navigation = useNavigation();
   const [quantity, setQuantity] = useState(cartItems.quantity);
 
- 
-  const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
+  const increaseQuantity = (itemId) => {
+    dispatch({ type: cartActionTypes.INCREASE_QUANTITY, payload: itemId });
   };
-
-  const increaseQuantity = () => {
-    setQuantity(quantity + 1);
+  
+  const decreaseQuantity = (itemId) => {
+    dispatch({ type: cartActionTypes.DECREASE_QUANTITY, payload: itemId });
   };
-
+  
 
   if (cartItems.length === 0) {
     return (
-        <View>
+      <View>
         <Text style={styles.noitems}>You have no items in your Shopping Bag.</Text>
         <TouchableOpacity style={{ backgroundColor: "black", padding: 25, width: 400, marginLeft: -10, flexDirection: "row", justifyContent: "center" }} 
         onPress={() => navigation.navigate('ProductList')}>
@@ -66,21 +34,47 @@ const CartItem = () => {
     );
   }
 
-  return (
-    <View>
-      {cartItems.map((cartItem, index) => (
-        <CartItemRow
-          key={cartItem.id}
-          cartItem={cartItem}
-          quantity={cartItem.quantity}
-          increaseQuantity={() => increaseQuantity(cartItem.id)}
-          decreaseQuantity={() => decreaseQuantity(cartItem.id)}
-        />
-      ))}
-    </View>
-  );
-};
+  const renderItem = (cartItem) => {
+    const { id, name: productName, desc, imageUrl, price, countInStock, quantity } = cartItem;
 
+    return (
+      <View style={styles.cartItem} key={id}>
+        <Image source={imageUrl} style={styles.cartItemImage} />
+        <View  style={{ flexDirection: 'column', marginLeft: 20 }}>
+        <TouchableOpacity>
+          <Text style={styles.cartItemName}>{productName}</Text>
+        </TouchableOpacity>
+        <Text style={styles.cartItemDesc}>{desc}</Text>
+        
+ <View style={{ flexDirection: 'row', marginTop: 15 }}>
+      <TouchableOpacity onPress={decreaseQuantity}>
+        <Image style={{ width: 20, height: 20 }} source={require("../../assets/minus.png")} />
+      </TouchableOpacity>
+
+      <Text style={{ fontFamily: "TenorSans", fontSize: 16, marginLeft: 20, marginRight: 20 }}>{quantity}</Text>
+
+      <TouchableOpacity onPress={increaseQuantity}>
+        <Image style={{ width: 20, height: 20 }} source={require("../../assets/pluss.png")} />
+      </TouchableOpacity>
+    </View>
+
+<Text style={styles.cartItemPrice}>${price}</Text>
+ 
+       
+        </View>
+      </View>
+    );
+  };
+
+  return <View>
+  {cartItems.map((item, index) => (
+    <View key={item.id}>
+      {renderItem(item)}
+    </View>
+  ))}
+</View>
+
+};
 
 const styles = {
   cartItem: {
