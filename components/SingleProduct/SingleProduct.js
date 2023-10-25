@@ -75,7 +75,7 @@ const SingleProduct = () => {
         cartDispatch({
           type: cartActionTypes.ADD_TO_CART,
           payload: {
-            id: product.id, // Use the ID from the selected product
+            id: product.id,
             name: product.name,
             desc: product.desc,
             imageUrl: product.image,
@@ -93,6 +93,7 @@ const SingleProduct = () => {
       console.log(error);
     }
   };
+  
   
 
   return (
