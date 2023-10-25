@@ -50,19 +50,22 @@ const Cart = () => {
     
           {cartItems.length > 0 && (
           <View style={styles.cartScreenRight}>
-                <Image style={{ width: 380, marginBottom: 20 }} source={require("../../assets/line.png")} />
+                <Image style={{ width: 380, marginBottom: 20, height: 10 }} source={require("../../assets/line.png")} />
             <View style={styles.cartScreenInfo}>
               <Text style={{ fontFamily: "TenorSans", fontSize: 15}}>SUB TOTAL</Text>
               <Text style={{ color: "#DD8560", fontFamily: "TenorSans", fontSize: 17 }}>${getCartSubTotal()}</Text>
             </View>
 
-            <Text style={{ fontFamily: "TenorSans", fontSize: 15, color: "#9F9E9E"}}>
+            <Text style={{ fontFamily: "TenorSans", fontSize: 15, color: "#9F9E9E", lineHeight: 26, marginTop: 8, width: 320, marginBottom: 80 }}>
                 shipping charges, taxes and discount codes are calculated at the time of accounting. 
                 </Text>
 
-            <TouchableOpacity onPress={() => {}}>
-                <Text>
-                    Click to Proceed to Checkout
+            <TouchableOpacity style={{ backgroundColor: "black", padding: 25, width: 400, marginLeft: -10, flexDirection: "row", justifyContent: "center", marginTop: 25 }} 
+              onPress={() => {}}>
+                <Image style={{ width: 25, height: 25, marginTop: -5, marginRight: 15}} source={require("../../assets/shopping.png")} />
+         
+                <Text style={styles.continue }>
+                    BUY NOW
                 </Text>
             </TouchableOpacity>
           </View>
@@ -90,12 +93,19 @@ const Cart = () => {
         flex: 1,
         padding: 10,
         flexDirection: "column",
-        marginTop: 300
+        marginTop: 150,
       },
       cartScreenInfo: {
         flexDirection: 'row',
         justifyContent: 'space-between',
       },
+
+      continue: {
+        fontFamily: "TenorSans",
+        fontSize: 16,
+        textAlign: "center",
+        color: "white"
+    }
     });
     
 
