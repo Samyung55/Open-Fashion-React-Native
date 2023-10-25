@@ -1,7 +1,8 @@
 import { createContext, useReducer, useContext, useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import cartReducer from './reducers/cartReducer'
+import cartReducer from './reducers/cartReducer';
+
 
 const CartContext = createContext('')
 
@@ -10,7 +11,7 @@ let cartState = {
 }
 
 export const CartProvider = ({ children }) => {
-    const [cart, dispatch] = useReducer(cartReducer, cartState)
+    const [cart, dispatch] = useReducer(cartReducer, cartState);
 
     useEffect(() => {
         // Load cart items from AsyncStorage when the app starts
