@@ -50,7 +50,7 @@ const Cart = () => {
     
           {cartItems.length > 0 && (
           <View style={styles.cartScreenRight}>
-                <Image style={{ width: 380, marginBottom: 20, height: 10 }} source={require("../../assets/line.png")} />
+                <Image style={{ width: 370, marginBottom: 20, height: 2 }} source={require("../../assets/line.png")} />
             <View style={styles.cartScreenInfo}>
               <Text style={{ fontFamily: "TenorSans", fontSize: 15}}>SUB TOTAL</Text>
               <Text style={{ color: "#DD8560", fontFamily: "TenorSans", fontSize: 17 }}>${getCartSubTotal()}</Text>
