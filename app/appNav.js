@@ -21,7 +21,7 @@ const AppNavigator = () => {
     
     <ProductContextProvider>
       <CartProvider>
-      <Stack.Navigator initialRouteName="Cart" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Blog" component={BlogScreen} />
