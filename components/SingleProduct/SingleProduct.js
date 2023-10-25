@@ -77,6 +77,7 @@ const SingleProduct = () => {
           payload: {
             id: product.id, // Use the ID from the selected product
             name: product.name,
+            desc: product.desc,
             imageUrl: product.image,
             price: product.price,
             countInStock: 10, // You can set this to an appropriate value
