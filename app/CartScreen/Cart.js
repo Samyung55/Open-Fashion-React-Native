@@ -50,10 +50,16 @@ const Cart = () => {
     
           {cartItems.length > 0 && (
           <View style={styles.cartScreenRight}>
+                <Image style={{ width: 380, marginBottom: 20 }} source={require("../../assets/line.png")} />
             <View style={styles.cartScreenInfo}>
-              <Text>Subtotal ({getCartCount()} items)</Text>
-              <Text>${getCartSubTotal()}</Text>
+              <Text style={{ fontFamily: "TenorSans", fontSize: 15}}>SUB TOTAL</Text>
+              <Text style={{ color: "#DD8560", fontFamily: "TenorSans", fontSize: 17 }}>${getCartSubTotal()}</Text>
             </View>
+
+            <Text style={{ fontFamily: "TenorSans", fontSize: 15, color: "#9F9E9E"}}>
+                shipping charges, taxes and discount codes are calculated at the time of accounting. 
+                </Text>
+
             <TouchableOpacity onPress={() => {}}>
                 <Text>
                     Click to Proceed to Checkout
@@ -83,7 +89,8 @@ const Cart = () => {
       cartScreenRight: {
         flex: 1,
         padding: 10,
-        flexDirection: "column"
+        flexDirection: "column",
+        marginTop: 300
       },
       cartScreenInfo: {
         flexDirection: 'row',
