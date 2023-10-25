@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { useCartContext } from '../../contexts/cartContext';
 import * as cartActionTypes from '../../contexts/utils/cart';
@@ -10,6 +10,18 @@ const CartItem = () => {
   const { cart, dispatch } = useCartContext();
   const { cartItems } = cart;
   const navigation = useNavigation();
+  const [quantity, setQuantity] = useState(cartItems.quantity);
+
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
 
   if (cartItems.length === 0) {
     return (
@@ -25,47 +37,33 @@ const CartItem = () => {
   }
 
   const renderItem = (cartItem) => {
-    const { id, name: productName, imageUrl, price, countInStock, quantity } = cartItem;
+    const { id, name: productName, desc, imageUrl, price, countInStock, quantity } = cartItem;
 
     return (
       <View style={styles.cartItem} key={id}>
         <Image source={imageUrl} style={styles.cartItemImage} />
-
+        <View  style={{ flexDirection: 'column', marginLeft: 20 }}>
         <TouchableOpacity onPress={() => navigation.navigate('Product', { productId: id })}>
           <Text style={styles.cartItemName}>{productName}</Text>
         </TouchableOpacity>
-        <Text style={styles.cartItemPrice}>${price}</Text>
+        <Text style={styles.cartItemDesc}>{desc}</Text>
+        
+ <View style={{ flexDirection: 'row', marginTop: 15 }}>
+      <TouchableOpacity onPress={decreaseQuantity}>
+        <Image style={{ width: 20, height: 20 }} source={require("../../assets/minus.png")} />
+      </TouchableOpacity>
 
-        <Picker
-  selectedValue={quantity}
-  style={styles.cartItemSelect}
-  onValueChange={(itemValue) => {
-    dispatch({
-      type: cartActionTypes.ADD_TO_CART,
-      payload: {
-        id,
-        name: productName,
-        imageUrl,
-        price,
-        countInStock,
-        quantity: parseInt(itemValue),
-      },
-    });
-  }}
->
-  {[...Array(countInStock).keys()].map((x) => (
-    <Picker.Item key={x + 1} value={x + 1} label={`${x + 1}`} />
-  ))}
-</Picker>
+      <Text style={{ fontFamily: "TenorSans", fontSize: 16, marginLeft: 20, marginRight: 20 }}>{quantity}</Text>
 
-        <TouchableOpacity
-          style={styles.cartItemDeleteBtn}
-          onPress={() => {
-            dispatch({ type: cartActionTypes.REMOVE_FROM_CART, payload: id });
-          }}
-        >
-          <Text>Delete</Text>
-        </TouchableOpacity>
+      <TouchableOpacity onPress={increaseQuantity}>
+        <Image style={{ width: 20, height: 20 }} source={require("../../assets/pluss.png")} />
+      </TouchableOpacity>
+    </View>
+
+<Text style={styles.cartItemPrice}>${price}</Text>
+ 
+       
+        </View>
       </View>
     );
   };
@@ -77,21 +75,30 @@ const styles = {
   cartItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    margin: 10,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
+    marginTop: 20,
+    marginLeft: 20
   },
   cartItemImage: {
     width: 100,
-    height: 100,
+    height: 150,
   },
   cartItemName: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontFamily: "TenorSans", 
   },
+
+  cartItemDesc: {
+    fontSize: 14,
+    width: 240,
+    marginTop: 10,
+    fontFamily: "TenorSans", 
+  },
+
   cartItemPrice: {
     fontSize: 16,
+    marginTop: 20,
+    color: "#DD8560",
+    fontFamily: "TenorSans", 
   },
   cartItemSelect: {
     width: 100,
