@@ -6,20 +6,21 @@ import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker';
 
 
-const CartItem = () => {
-  const { cart, dispatch } = useCartContext();
+const CartItem = ({ id }) => {
+  const { cart, dispatch, toggleAmount } = useCartContext();
   const { cartItems } = cart;
   const navigation = useNavigation();
   const [quantity, setQuantity] = useState(cartItems.quantity);
 
-  const increaseQuantity = (itemId) => {
-    dispatch({ type: cartActionTypes.INCREASE_QUANTITY, payload: itemId });
+  const increase = () => {
+    toggleAmount(id, 'inc');
   };
-  
-  const decreaseQuantity = (itemId) => {
-    dispatch({ type: cartActionTypes.DECREASE_QUANTITY, payload: itemId });
+
+  const decrease = () => {
+    toggleAmount(id, 'dec');
   };
-  
+
+
 
   if (cartItems.length === 0) {
     return (
@@ -47,13 +48,13 @@ const CartItem = () => {
         <Text style={styles.cartItemDesc}>{desc}</Text>
         
  <View style={{ flexDirection: 'row', marginTop: 15 }}>
-      <TouchableOpacity onPress={decreaseQuantity}>
+      <TouchableOpacity onPress={decrease }>
         <Image style={{ width: 20, height: 20 }} source={require("../../assets/minus.png")} />
       </TouchableOpacity>
 
       <Text style={{ fontFamily: "TenorSans", fontSize: 16, marginLeft: 20, marginRight: 20 }}>{quantity}</Text>
 
-      <TouchableOpacity onPress={increaseQuantity}>
+      <TouchableOpacity onPress={increase}>
         <Image style={{ width: 20, height: 20 }} source={require("../../assets/pluss.png")} />
       </TouchableOpacity>
     </View>
