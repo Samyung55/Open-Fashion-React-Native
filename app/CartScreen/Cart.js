@@ -12,6 +12,16 @@ const Cart = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const navigation = useNavigation();
+const { cart } = useCartContext();
+  const { cartItems } = cart;
+
+  const getCartCount = () => {
+    return cartItems.reduce((quantity, item) => Number(item.quantity) + quantity, 0);
+  };
+
+  const getCartSubTotal = () => {
+    return cartItems.reduce((price, item) => price + item.price * item.quantity, 0);
+  };
 
   useEffect(() => {
     async function loadCustomFonts() {
@@ -29,24 +39,12 @@ const Cart = () => {
     return null; // Wait for the font to load before rendering
   }
 
-  const { cart } = useCartContext();
-  const { cartItems } = cart;
-
-  const getCartCount = () => {
-    return cartItems.reduce((quantity, item) => Number(item.quantity) + quantity, 0);
-  };
-
-  const getCartSubTotal = () => {
-    return cartItems.reduce((price, item) => price + item.price * item.quantity, 0);
-  };
-
+  
   return (
     <View style={styles.cartScreen}>
       <View style={styles.cartScreenLeft}>
         <Text style={styles.cartScreenTitle}>CART</Text>
-        {cartItems.map((item) => (
-          <CartItem key={item.id} item={item} />
-        ))}
+                <CartItem />
       </View>
 
       {cartItems.length > 0 && (
