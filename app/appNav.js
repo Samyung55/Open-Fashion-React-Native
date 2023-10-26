@@ -14,6 +14,7 @@ import SingleForYou from '../components/SingleProduct/SingleForYou';
 import Cart from './CartScreen/Cart';
 import { CartProvider } from '../contexts/cartContext';
 
+
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
