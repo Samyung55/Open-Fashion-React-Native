@@ -1,56 +1,46 @@
 import { createContext, useReducer, useContext, useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { TOGGLE_CART_ITEM_AMOUNT } from "../contexts/utils/cartActionTypes"; // Import your action type
 import cartReducer from './reducers/cartReducer';
 
-
-const CartContext = createContext('')
+const CartContext = createContext({
+  cart: { cartItems: [] },
+  dispatch: () => {},
+  toggleAmount: () => {}
+});
 
 let cartState = {
-    cartItems: []
+  cartItems: []
 }
 
 export const CartProvider = ({ children }) => {
-    const [cart, dispatch] = useReducer(cartReducer, cartState);
+  const [cart, dispatch] = useReducer(cartReducer, cartState);
 
-    useEffect(() => {
-        // Load cart items from AsyncStorage when the app starts
-        (async () => {
-          try {
-            const cartItems = await AsyncStorage.getItem('cartItems');
-            if (cartItems) {
-              dispatch({ type: 'INITIALIZE_CART', payload: JSON.parse(cartItems) });
-            }
-          } catch (error) {
-            console.error('Error loading cart items:', error);
-          }
-        })();
-      }, []);
-    
-      useEffect(() => {
-        // Save cart items to AsyncStorage whenever the cart state changes
-        AsyncStorage.setItem('cartItems', JSON.stringify(cart.cartItems));
-      }, [cart.cartItems]);
+  // toggle amount
+  const toggleAmount = (id, value) => {
+    dispatch({ type: TOGGLE_CART_ITEM_AMOUNT, payload: { id, value } });
+  };
 
-    const value = {
-        cart, dispatch
-    }
+  const value = {
+    cart,
+    dispatch,
+    toggleAmount
+  }
 
-    return (
-        <CartContext.Provider value={value}>
-            {children}
-        </CartContext.Provider>
-    )
+  return (
+    <CartContext.Provider value={value}>
+      {children}
+    </CartContext.Provider>
+  )
 }
 
 export const useCartContext = () => {
-    const context = useContext(CartContext)
+  const context = useContext(CartContext)
 
-    if(!context) {
-        throw new Error("useCartContext Error")
-    }
+  if (!context) {
+    throw new Error("useCartContext Error")
+  }
 
-    return context
+  return context
 }
-
-console.log(CartContext)
