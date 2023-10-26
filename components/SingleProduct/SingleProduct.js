@@ -14,11 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 
 const SingleProduct = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
-    const [selectedItem, setSelectedItem] = useState(1);
-    const [isMenuVisible, setMenuVisible] = useState(false);
     const { products, newArrival } = useContext(ProductContext);
-    const Allproduct = [ products, newArrival ]
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedSize, setSelectedSize] = useState(''); 
   const [selectedColor, setSelectedColor] = useState(''); 
   const navigation = useNavigation();
