@@ -6,18 +6,20 @@ import { ProductContext } from "../../contexts/productContext";
 import Navbar from "../Navbar/Navbar";
 import { useRoute } from '@react-navigation/native';
 
+import { cartActionTypes } from "../../contexts/utils/cartActionTypes";
+import { useCartContext } from "../../contexts/cartContext";
+import { foryouData } from "../../contexts/data";
 import { useNavigation } from '@react-navigation/native';
 
 const SingleForYou = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
-    const [selectedItem, setSelectedItem] = useState(1);
-    const [isMenuVisible, setMenuVisible] = useState(false);
     const { forYou, setForYou } = useContext(ProductContext);
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedSize, setSelectedSize] = useState(''); 
   const [selectedColor, setSelectedColor] = useState(''); 
   const navigation = useNavigation();
+  const { dispatch: cartDispatch } = useCartContext();
 
+  const [quantity, setQuantity] = useState(0);
   
   const handleSizeSelection = (size) => {
     setSelectedSize(size);
@@ -56,6 +58,38 @@ const SingleForYou = () => {
   if (!fontLoaded) {
     return null; // Wait for the font to load before rendering
   }
+
+  const addToCartHandler = async () => {
+    try {
+      
+      const products = foryouData.filter((p) => p.id === selectedProduct.id);
+  
+      if (products.length > 0) {
+        
+        const product = products[0];
+  
+        cartDispatch({
+          type: cartActionTypes.ADD_TO_CART,
+          payload: {
+            id: product.id,
+            name: product.name,
+            desc: product.desc,
+            imageUrl: product.image,
+            price: product.price,
+            countInStock: 10,
+            quantity: parseInt(quantity),
+          },
+        });
+  
+        navigation.navigate('Cart');
+      } else {
+        console.log("Product not found");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
 
   return (
     <ScrollView style={{ backgroundColor: "#FFFFFF"}}>
@@ -133,7 +167,7 @@ const SingleForYou = () => {
           </View>
           </View>
 
-          <TouchableOpacity style={{ backgroundColor: "black", flexDirection: "row", justifyContent: "space-between", padding: 20}}>
+          <TouchableOpacity onPress={addToCartHandler} style={{ backgroundColor: "black", flexDirection: "row", justifyContent: "space-between", padding: 20}}>
             <View style={{ flexDirection: "row"}}>
             <Image style={{ width: 30, height: 30 }} source={require("../../assets/white.png")} />
             <Text style={{ color: "white", marginLeft: 10, fontFamily: "TenorSans", fontSize: 16, marginTop: 5 }}>ADD TO BASKET</Text>
