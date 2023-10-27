@@ -15,6 +15,7 @@ import Cart from './CartScreen/Cart';
 import { CartProvider } from '../contexts/cartContext';
 import Collection from './Collection/Collection';
 import Checkout from './Checkout/Checkout';
+import PlaceOrder from './Checkout/PlaceOrder';
 
 
 const Stack = createStackNavigator();
@@ -24,7 +25,7 @@ const AppNavigator = () => {
     
     <ProductContextProvider>
       <CartProvider>
-      <Stack.Navigator initialRouteName="Checkout" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="PlaceOrder" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Blog" component={BlogScreen} />
@@ -37,6 +38,7 @@ const AppNavigator = () => {
         <Stack.Screen name="Cart" component={Cart} />
         <Stack.Screen name="Collection" component={Collection} />
         <Stack.Screen name="Checkout" component={Checkout} />
+        <Stack.Screen name="PlaceOrder" component={PlaceOrder} />
       </Stack.Navigator>
       </CartProvider>
       </ProductContextProvider>
