@@ -59,8 +59,8 @@ const { cart } = useCartContext();
             shipping charges, taxes and discount codes are calculated at the time of accounting.
           </Text>
 
-          <TouchableOpacity style={{ backgroundColor: "black", padding: 25, width: 400, marginLeft: -20, flexDirection: "row", justifyContent: "center", marginTop: 25 }} 
-            onPress={() => {}}>
+          <TouchableOpacity style={{ backgroundColor: "black", padding: 25, width: 400, marginLeft: -20, flexDirection: "row", justifyContent: "center", marginTop: 55 }} 
+            onPress={() => navigation.navigate("Checkout")}>
             <Image style={{ width: 25, height: 25, marginTop: -5, marginRight: 15 }} source={require("../../assets/shopping.png")} />
 
             <Text style={styles.continue}>
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     flexDirection: "column",
-    marginTop: 150,
+    marginTop: 180,
   },
   cartScreenInfo: {
     flexDirection: 'row',
