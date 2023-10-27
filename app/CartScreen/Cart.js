@@ -41,7 +41,7 @@ const { cart } = useCartContext();
 
   
   return (
-    <View style={styles.cartScreen}>
+    <ScrollView style={styles.cartScreen}>
       <View style={styles.cartScreenLeft}>
         <Text style={styles.cartScreenTitle}>CART</Text>
                 <CartItem />
@@ -69,7 +69,7 @@ const { cart } = useCartContext();
           </TouchableOpacity>
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 };
 
