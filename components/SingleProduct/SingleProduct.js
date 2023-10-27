@@ -64,10 +64,13 @@ const SingleProduct = () => {
 
   const addToCartHandler = async () => {
     try {
-      // Find the selected product by ID in the ProductData array
-      const product = ProductData.find((p) => p.id === selectedProduct.id);
+      // Find all products with a matching ID in the ProductData array
+      const products = ProductData.filter((p) => p.id === selectedProduct.id);
   
-      if (product) {
+      if (products.length > 0) {
+        // For simplicity, let's assume you want to add the first matching product to the cart
+        const product = products[0];
+  
         cartDispatch({
           type: cartActionTypes.ADD_TO_CART,
           payload: {
@@ -89,7 +92,6 @@ const SingleProduct = () => {
       console.log(error);
     }
   };
-  
   
 
   return (
