@@ -193,6 +193,7 @@ export const BlogData = [
 
 export const ProductData = [
     {
+        id: 1,
         name: "ELEGANT SILK DRESS",
         desc: "Luxurious Silk Dress with Floral Embroidery",
         price: 199.99,
@@ -201,6 +202,7 @@ export const ProductData = [
         quantity: 1
     },
     {
+        id: 2,
         name: "LEATHER CLASSIC JACKET",
         desc: "Handcrafted Leather Jacket for Style and Durability",
         price: 179.99,
@@ -209,6 +211,7 @@ export const ProductData = [
         quantity: 1
     },
     {
+        id: 3,
         name: "STYLISH SPORTSWEAR SET",
         desc: "Trendy Sportswear Set for Active Lifestyles",
         price: 129.95,
@@ -217,6 +220,7 @@ export const ProductData = [
         quantity: 1
     },
     {
+        id: 4,
         name: "VINTAGE ANALOG WATCH",
         desc: "Classic Analog Watch with Leather Strap",
         price: 89.99,
@@ -225,6 +229,7 @@ export const ProductData = [
         quantity: 1
     },
     {
+        id: 5,
         name: "DESIGNER SUNGLASSES",
         desc: "Fashionable Sunglasses with UV Protection",
         price: 59.99,
@@ -233,6 +238,7 @@ export const ProductData = [
         quantity: 1
     },
     {
+        id: 6,
         name: "COZY KNIT SWEATER",
         desc: "Warm and Cozy Knit Sweater for Chilly Days",
         price: 79.95,
@@ -241,6 +247,7 @@ export const ProductData = [
         quantity: 1
     },
     {
+        id: 7,
         name: "SUEDE ANKLE BOOTS",
         desc: "Trendy Suede Ankle Boots for Stylish Outfits",
         price: 139.99,
@@ -249,6 +256,7 @@ export const ProductData = [
         quantity: 1
     },
     {
+        id: 8,
         name: "LINEN SUMMER DRESS",
         desc: "Breathable Linen Dress for Summer Comfort",
         price: 69.99,
@@ -257,6 +265,7 @@ export const ProductData = [
         quantity: 1
     },
     {
+        id: 9,
         name: "CLASSIC MEN'S SHIRT",
         desc: "Timeless Men's Shirt for Formal Occasions",
         price: 59.95,
@@ -265,6 +274,7 @@ export const ProductData = [
         quantity: 1
     },
     {
+        id: 10,
         name: "LEATHER CROSSBODY BAG",
         desc: "Chic Leather Crossbody Bag for Everyday Use",
         price: 119.99,
@@ -273,6 +283,7 @@ export const ProductData = [
         quantity: 1
     },
     {
+        id: 11,
         name: "CASUAL DENIM JEANS",
         desc: "Comfortable Denim Jeans for Casual Wear",
         price: 89.95,
@@ -281,6 +292,7 @@ export const ProductData = [
         quantity: 1
     },
     {
+        id: 12,
         name: "DESIGNER TOTE BAG",
         desc: "Designer Tote Bag for a Stylish Statement",
         price: 149.99,
@@ -289,6 +301,7 @@ export const ProductData = [
         quantity: 1
     },
     {
+        id: 13,
         name: "CLASSIC LEATHER BELT",
         desc: "Timeless Leather Belt for a Polished Look",
         price: 49.99,
@@ -297,6 +310,7 @@ export const ProductData = [
         quantity: 1
     },
     {
+        id: 14,
         name: "ELEGANT GOLD NECKLACE",
         desc: "Elegant Gold Necklace for Special Occasions",
         price: 79.99,
