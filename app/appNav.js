@@ -13,6 +13,7 @@ import SingleArrival from '../components/SingleProduct/SingleArrival';
 import SingleForYou from '../components/SingleProduct/SingleForYou';
 import Cart from './CartScreen/Cart';
 import { CartProvider } from '../contexts/cartContext';
+import Collection from './Collection/Collection';
 
 
 const Stack = createStackNavigator();
@@ -33,6 +34,7 @@ const AppNavigator = () => {
         <Stack.Screen name="SingleArrival" component={SingleArrival} />
         <Stack.Screen name="SingleForYou" component={SingleForYou} />
         <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="Collection" component={Collection} />
       </Stack.Navigator>
       </CartProvider>
       </ProductContextProvider>
