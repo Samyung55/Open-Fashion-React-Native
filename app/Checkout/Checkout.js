@@ -14,8 +14,8 @@ import Navbar from "../../components/Navbar/Navbar";
 const Checkout = () => {
     
   const [isMenuVisible, setMenuVisible] = useState(false);
-  const navigation = useNavigation();
   const [fontLoaded, setFontLoaded] = useState(false);
+  const navigation = useNavigation();
 
   const { cart } = useCartContext();
   const { cartItems } = cart;
@@ -56,29 +56,51 @@ const Checkout = () => {
             <Navbar />
         <View style={styles.cartScreenLeft}>
           <Text style={styles.cartScreenTitle}>CHECKOUT</Text>
+        <Image style={{ marginTop: 2,  marginBottom: 5 }} source={require("../../assets/3.png")}/>
+
                   <CartItem />
         </View>
-  
+        {cartItems.length > 0 && ( 
+          <>
+          <View style={{ flexDirection: "row", borderTopWidth: 0.5, borderBottomWidth: 0.5, marginTop: 20, marginLeft: 27, borderTopColor: "#B3B0B0", borderBottomColor: "#B3B0B0" }}>
+          <TouchableOpacity style={{ flexDirection: "row", padding: 15, marginLeft: 15 }}>
+          <Image style={{ width: 30, height: 30 }} source={require("../../assets/voucher.png")} />
+          <Text style={{ alignSelf: "center", fontFamily: "TenorSans", fontSize: 15, marginLeft: 15 }}>Add promo code</Text>
+          </TouchableOpacity>
+          </View>
+
+          <View style={{ flexDirection: "row", borderTopWidth: 0.5, borderBottomWidth: 0.5, marginTop: 20, marginLeft: 27, borderTopColor: "#B3B0B0", borderBottomColor: "#B3B0B0" }}>
+          <TouchableOpacity style={{ flexDirection: "row", padding: 15, marginLeft: 15 }}>
+          <Image style={{ width: 30, height: 30 }} source={require("../../assets/door-to-door.png")} />
+          <View style={{ flexDirection: "row", justifyContent: "space-between"}}>
+          <Text style={{ alignSelf: "center", fontFamily: "TenorSans", fontSize: 15, marginLeft: 15 }}>Delivery</Text>
+          <Text style={{ alignSelf: "center", fontFamily: "TenorSans", fontSize: 15, marginLeft: 15 }}>Free</Text>
+          </View>
+          </TouchableOpacity>
+          </View>
+
           <View style={styles.cartScreenRight}>
-            <Image style={{ width: 360, marginBottom: 20, height: 2 }} source={require("../../assets/line.png")} />
-            <View style={styles.cartScreenInfo}>
-              <Text style={{ fontFamily: "TenorSans", fontSize: 15}}>SUB TOTAL</Text>
+
+            <View style={styles.cartScreenInfo}>  
+           
+              <Text style={{ fontFamily: "TenorSans", fontSize: 15}}>EST. TOTAL</Text>
               <Text style={{ color: "#DD8560", fontFamily: "TenorSans", fontSize: 17 }}>${getCartSubTotal()}</Text>
             </View>
   
-            <Text style={{ fontFamily: "TenorSans", fontSize: 15, color: "#9F9E9E", lineHeight: 26, marginTop: 8, width: 320, marginBottom: 80 }}>
-              shipping charges, taxes and discount codes are calculated at the time of accounting.
-            </Text>
-  
             <TouchableOpacity style={{ backgroundColor: "black", padding: 25, width: 400, marginLeft: -20, flexDirection: "row", justifyContent: "center", marginTop: 25 }} 
-              onPress={() => {}}>
+              onPress={() => navigation.navigate("PlaceOrder")}>
               <Image style={{ width: 25, height: 25, marginTop: -5, marginRight: 15 }} source={require("../../assets/shopping.png")} />
   
               <Text style={styles.continue}>
-                BUY NOW
+                CHECKOUT
               </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> 
+          
           </View>
+          </>
+        )}
+
+       
       </ScrollView>
     )
 }
@@ -88,12 +110,13 @@ const styles = StyleSheet.create({
     cartScreen: {
       flex: 1,
       flexDirection: 'column',
+      backgroundColor: "white",
     },
     cartScreenLeft: {
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "white"
+      marginTop: 30
     },
     cartScreenTitle: {
       fontSize: 20,
@@ -105,7 +128,7 @@ const styles = StyleSheet.create({
       flex: 1,
       padding: 20,
       flexDirection: "column",
-      marginTop: 150,
+      marginTop: 100,
     },
     cartScreenInfo: {
       flexDirection: 'row',
