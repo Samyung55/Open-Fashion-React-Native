@@ -4,9 +4,11 @@ import { useFonts, BodoniModa_700Bold_Italic } from '@expo-google-fonts/bodoni-m
 import { FontAwesome } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from '@react-navigation/native';
 
 const Hero = () => {
     
+  const navigation = useNavigation();
     const [fontLoaded, setFontLoaded] = useState(false);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const Hero = () => {
         <Text style={styles.heading2}>FASHION</Text>
         <Text style={styles.heading3}>& ACCESSORIES</Text>
         </View>
-        <TouchableOpacity style={styles.herobtn}>
+        <TouchableOpacity onPress={() => navigation.navigate("Collection")} style={styles.herobtn}>
             <Text style={{ fontSize: 16, textAlign: "center", fontFamily: "TenorSans", color: "white" }}>EXPLORE COLLECTION</Text>
         </TouchableOpacity>
       </ImageBackground>
