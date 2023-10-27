@@ -33,7 +33,7 @@ const Navbar = () => {
           <TouchableOpacity onPress={toggleMenu}>
             <Image style={{ width: 35, height: 27, marginLeft: -10 }} source={require("../../assets/menu.png")} />
           </TouchableOpacity>
-          <Image style={{ width: 130, height: 50, marginLeft: 70, marginRight: 20  }} source={require("../../assets/open.png")} />
+          <Image style={{ width: 100, height: 40, marginLeft: 100, marginRight: 20  }} source={require("../../assets/open.png")} />
            
           <TouchableOpacity>
             <Image style={{ width: 25, height: 25, marginLeft: 40 }} source={require("../../assets/search.png")} />
