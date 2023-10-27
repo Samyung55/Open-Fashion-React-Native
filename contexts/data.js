@@ -104,7 +104,7 @@ export const foryouData = [
         id: 1,
         name: "ELEGANT SILK DRESS",
         desc: "Harris Tweed Three button Jacket",
-        price: "$120",
+        price: "120",
         ratings: "4.5",
         image: slide1,
         category: "Apparel"
@@ -113,7 +113,7 @@ export const foryouData = [
         id: 2,
         name: "ELEGANT SILK DRESS",
         desc: "Cashmere Blend Cropped Jacket SW1WJ285-AM",
-        price: "$120",
+        price: "120",
         ratings: "4.5",
         image: slide2,
         category: "T-shirt"
@@ -122,7 +122,7 @@ export const foryouData = [
         id: 3,
         name: "ELEGANT SILK DRESS",
         desc: "Harris Tweed Three-button Jacket",
-        price: "$120",
+        price: "120",
         ratings: "4.5",
         image: slide3,
         category: "Dress"
@@ -131,7 +131,7 @@ export const foryouData = [
         id: 4,
         name: "ELEGANT SILK DRESS",
         desc: "21WN reversible angora cardigan",
-        price: "$120",
+        price: "120",
         ratings: "4.5",
         image: slide1,
         category: "Bag"
