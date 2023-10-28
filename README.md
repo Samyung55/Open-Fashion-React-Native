@@ -12,3 +12,5 @@ npx create-expo-app -e with-router
 
 - [Expo Router: Docs](https://expo.github.io/router)
 - [Expo Router: Repo](https://github.com/expo/router)
+
+<video src="presentation.mp4" controls title="Title"></video>
