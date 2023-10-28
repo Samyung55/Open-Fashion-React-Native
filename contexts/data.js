@@ -29,7 +29,7 @@ export const arrivalData = [
         id: 1,
         name: "ELEGANT SILK DRESS",
         desc: "21WN reversible angora cardigan",
-        price: "$120",
+        price: "120",
         image: angora1,
         ratings: "4.5",
         category: "Apparel",
@@ -38,7 +38,7 @@ export const arrivalData = [
         id: 2,
         name: "ELEGANT SILK DRESS",
         desc: "21WN reversible angora cardigan",
-        price: "$120",
+        price: "120",
         image: angora2,
         ratings: "4.5",
         category: "T-shirt"
@@ -47,7 +47,7 @@ export const arrivalData = [
         id: 3,
         name: "ELEGANT SILK DRESS",
         desc: "21WN reversible angora cardigan",
-        price: "$120",
+        price: "120",
         image: angora3,
         ratings: "4.5",
         category: "Dress"
@@ -56,7 +56,7 @@ export const arrivalData = [
         id: 4,
         name: "ELEGANT SILK DRESS",
         desc: "Harris Tweed Three button Jacket",
-        price: "$120",
+        price: "120",
         image: angora4,
         ratings: "4.5",
         category: "Bag"
@@ -65,7 +65,7 @@ export const arrivalData = [
         id: 5,
         name: "ELEGANT SILK DRESS",
         desc: "Harris Tweed Three button Jacket",
-        price: "$120",
+        price: "120",
         image: slide1,
         ratings: "4.5",
         category: "Apparel"
@@ -74,7 +74,7 @@ export const arrivalData = [
         id: 6,
         name: "ELEGANT SILK DRESS",
         desc: "Harris Tweed Three button Jacket",
-        price: "$120",
+        price: "120",
         image: slide2,
         ratings: "4.5",
         category: "T-shirt"
@@ -83,7 +83,7 @@ export const arrivalData = [
         id: 7,
         name: "ELEGANT SILK DRESS",
         desc: "Harris Tweed Three button Jacket",
-        price: "$120",
+        price: "120",
         image: slide3,
         ratings: "4.5",
         category: "Dress"
@@ -92,7 +92,7 @@ export const arrivalData = [
         id: 8,
         name: "ELEGANT SILK DRESS",
         desc: "21WN reversible angora cardigan",
-        price: "$120",
+        price: "120",
         ratings: "4.5",
         image: slide1,
         category: "Bag"
