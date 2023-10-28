@@ -8,13 +8,15 @@ import { ProductContext } from "../../contexts/productContext";
 import { ImageBackground } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import Menu from "../../components/Menu/Menu";
+import { useNavigation } from '@react-navigation/native';
 
-const BlogScreen = ({ navigation }) => {
+const BlogScreen = () => {
   const [fontLoaded, setFontLoaded] = useState(false);
   const [selectedItem, setSelectedItem] = useState(1);
   const [isMenuVisible, setMenuVisible] = useState(false);
   const { blogs, setBlogs } = useContext(ProductContext);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const navigation = useNavigation();
 
   const handleMenuItemClick = (item) => {
     setSelectedItem(item);
@@ -183,7 +185,8 @@ const BlogScreen = ({ navigation }) => {
           </View>
           <View style={{ justifyContent: "center", alignItems: "center"}}>
             <View style={{ flexDirection: "row", }}>
-            <TouchableOpacity>
+            <TouchableOpacity
+            >
             <Text style={{ marginRight: 40, fontSize: 16, fontFamily: "TenorSans" }}>About</Text>
             </TouchableOpacity>
             <TouchableOpacity>
@@ -256,19 +259,6 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginRight: 15
   },
-  socials: {
-    flexDirection: "row",
-    alignSelf: "center",
-    marginBottom: 1,
-    marginTop: 10
-  },
-  icons: {
-    marginTop: 30,
-    width: 25,
-    height: 25,
-    marginRight: 20,
-    marginBottom: 30,
-  },
   blogGradient: {
     padding: 20, 
     marginTop: 80,
@@ -305,6 +295,19 @@ menu: {
   paddingTop: 50,
   paddingHorizontal: 20,
 },
+  socials: {
+    flexDirection: "row",
+    alignSelf: "center",
+    marginBottom: 1,
+    marginTop: 10
+  },
+  icons: {
+    marginTop: 30,
+    width: 25,
+    height: 25,
+    marginRight: 20,
+    marginBottom: 30,
+  },
 });
 
 
