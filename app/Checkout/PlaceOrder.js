@@ -59,7 +59,7 @@ const PlaceOrder = () => {
             </Text>
 
             <TouchableOpacity style={{ flexDirection: "row", backgroundColor: "#F2F2F2", padding: 15, width: 350, alignSelf: "center", justifyContent: "space-between", borderRadius: 20 }}
-              onPress={navigation.navigate("AddNow")}
+             
             >
                 <Text  style={{ fontFamily: "TenorSans", }}>Add Shipping Address</Text>
                 <Image style={{ width: 20, height: 20, marginRight: 15 }} source={require("../../assets/plus.png")}/>
