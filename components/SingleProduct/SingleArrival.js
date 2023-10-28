@@ -6,7 +6,10 @@ import { ProductContext } from "../../contexts/productContext";
 import Navbar from "../Navbar/Navbar";
 import { useRoute } from '@react-navigation/native';
 
+import { cartActionTypes } from "../../contexts/utils/cartActionTypes";
+import { useCartContext } from "../../contexts/cartContext";
 import { useNavigation } from '@react-navigation/native';
+import { arrivalData } from "../../contexts/data";
 
 const SingleArrival = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
@@ -19,6 +22,9 @@ const SingleArrival = () => {
   const navigation = useNavigation();
   
 
+  const { dispatch: cartDispatch } = useCartContext();
+
+  const [quantity, setQuantity] = useState(1);
   
   const handleSizeSelection = (size) => {
     setSelectedSize(size);
@@ -58,6 +64,37 @@ const SingleArrival = () => {
     return null; // Wait for the font to load before rendering
   }
 
+  const addToCartHandler = async () => {
+    try {
+      
+      const products = arrivalData.filter((p) => p.id === selectedProduct.id);
+  
+      if (products.length > 0) {
+        
+        const product = products[0];
+  
+        cartDispatch({
+          type: cartActionTypes.ADD_TO_CART,
+          payload: {
+            id: product.id,
+            name: product.name,
+            desc: product.desc,
+            imageUrl: product.image,
+            price: product.price,
+            countInStock: 10,
+            quantity: parseInt(quantity),
+          },
+        });
+  
+        navigation.navigate('Cart');
+      } else {
+        console.log("Product not found");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <ScrollView style={{ backgroundColor: "#FFFFFF"}}>
         <Navbar />
@@ -76,7 +113,7 @@ const SingleArrival = () => {
     </View>
     <View style={{ marginLeft: 20, marginBottom: 20 }}>
     <Text style={{ fontFamily: "TenorSans", fontSize: 16, marginTop: 10  }}>{selectedProduct.desc}</Text>
-    <Text style={{ fontFamily: "TenorSans", fontSize: 18, marginTop: 10, color: "#DD8560"  }}>{selectedProduct.price}</Text>
+    <Text style={{ fontFamily: "TenorSans", fontSize: 18, marginTop: 10, color: "#DD8560"  }}>${selectedProduct.price}</Text>
     </View>
 
     <View style={{ flexDirection: "row", marginTop: -10, marginBottom: 30 }}>
@@ -134,7 +171,7 @@ const SingleArrival = () => {
           </View>
           </View>
 
-          <TouchableOpacity style={{ backgroundColor: "black", flexDirection: "row", justifyContent: "space-between", padding: 20}}>
+          <TouchableOpacity onPress={addToCartHandler} style={{ backgroundColor: "black", flexDirection: "row", justifyContent: "space-between", padding: 20}}>
             <View style={{ flexDirection: "row"}}>
             <Image style={{ width: 30, height: 30 }} source={require("../../assets/white.png")} />
             <Text style={{ color: "white", marginLeft: 10, fontFamily: "TenorSans", fontSize: 16, marginTop: 5 }}>ADD TO BASKET</Text>
