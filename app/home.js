@@ -63,7 +63,7 @@ const Home = () => {
 
         <View style={{ justifyContent: "center", alignItems: "center" }}>
           <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity>
+            <TouchableOpacity >
               <Text style={{ marginRight: 40, fontSize: 16, fontFamily: "TenorSans" }}>About</Text>
             </TouchableOpacity>
             <TouchableOpacity>
