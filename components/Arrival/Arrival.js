@@ -47,23 +47,23 @@ useEffect(() => {
 
 
 
-  useEffect(() => {
-    async function loadCustomFonts() {
-      await Font.loadAsync({
-        'BodoniModa-BoldItalic': require('../../assets/fonts/BodoniModa_28pt-BoldItalic.ttf'),
-        'TenorSans': require("../../assets/fonts/TenorSans-Regular.ttf"),
-      });
-      setFontLoaded(true);
-    }
-
-    loadCustomFonts();
-  }, []);
-
-  if (!fontLoaded) {
-    return null; // Wait for the font to load before rendering
+useEffect(() => {
+  async function loadCustomFonts() {
+    await Font.loadAsync({
+      'BodoniModa-BoldItalic': require('../../assets/fonts/BodoniModa_28pt-BoldItalic.ttf'),
+      'TenorSans': require("../../assets/fonts/TenorSans-Regular.ttf"),
+    });
+    setFontLoaded(true);
   }
 
-  
+  loadCustomFonts();
+}, []);
+
+if (!fontLoaded) {
+  return null; // Wait for the font to load before rendering
+}
+
+
 
   return (
     <View style={styles.container}>
