@@ -19,7 +19,8 @@ import PlaceOrder from './Checkout/PlaceOrder';
 import AddNow from './Checkout/AddNow';
 import PaymentMethod from './Checkout/PaymentMethod';
 import Confirmation from './Checkout/Confirmation';
-
+import Story from './Story/StoryScreen';
+import Contact from "./Contact/ContactScreen"
 
 const Stack = createStackNavigator();
 
@@ -45,6 +46,8 @@ const AppNavigator = () => {
         <Stack.Screen name="PlaceOrder" component={PlaceOrder} />
         <Stack.Screen name="PaymentMethod" component={PaymentMethod} />
         <Stack.Screen name="Confirmation" component={Confirmation} />
+        <Stack.Screen name="Story" component={Story} />
+        <Stack.Screen name="Contact" component={Contact} />
       </Stack.Navigator>
       </CartProvider>
       </ProductContextProvider>
