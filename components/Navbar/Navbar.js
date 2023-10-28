@@ -3,11 +3,13 @@ import { View, Text, StyleSheet, Image, Button, Modal } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as Font from 'expo-font';
 import Menu from "../Menu/Menu";
+import { useNavigation } from '@react-navigation/native';
 
 const Navbar = () => {
   
   const [fontLoaded, setFontLoaded] = useState(false);
   const [isMenuVisible, setMenuVisible] = useState(false);
+  const navigation = useNavigation();
 
   const toggleMenu = () => {
     setMenuVisible(!isMenuVisible);
@@ -38,7 +40,7 @@ const Navbar = () => {
           <TouchableOpacity>
             <Image style={{ width: 25, height: 25, marginLeft: 40 }} source={require("../../assets/search.png")} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity >
             <Image style={{ width: 22, height: 25, marginLeft: 25 }} source={require("../../assets/shopping-bag.png")} />
           </TouchableOpacity>
         </View>
