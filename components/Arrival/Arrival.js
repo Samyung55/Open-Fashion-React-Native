@@ -90,15 +90,15 @@ useEffect(() => {
             <View style={styles.productColumn}>
               <Image source={product.image} style={styles.productImage} />
               <Text style={styles.productName}>{product.desc}</Text>
-              <Text style={styles.price}>{product.price}</Text>
+              <Text style={styles.price}>${product.price}</Text>
             </View>
           </TouchableOpacity>
         ))}
       </View>
-      <View style={{flex: 1, flexDirection: "row", alignSelf: "center", marginBottom: 30, marginTop: 20}}>
+      <TouchableOpacity style={{flex: 1, flexDirection: "row", alignSelf: "center", marginBottom: 30, marginTop: 20}}>
           <Text style={{ fontFamily: "TenorSans", alignSelf: "center", fontSize: 16, marginBottom: 20}}>Explore More </Text>
-          <Image style={{marginLeft: 5}} source={require("../../assets/arow.png")} />
-      </View>
+       <Image style={{marginLeft: 5}} source={require("../../assets/arow.png")} />
+      </TouchableOpacity>
       <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
         <Image style={{ marginBottom: 30}} source={require("../../assets/3.png")}/>
         <View style={{flexDirection: "row"}}>
