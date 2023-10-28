@@ -154,7 +154,7 @@ const handleMenuItemClick = (item) => {
         <View>
             <Text style={{ fontFamily: "TenorSans", fontSize: 13.5, letterSpacing: 2, marginBottom: 10}}>{product.name}</Text>
             <Text style={{ fontFamily: "TenorSans", fontSize: 11.5, color: '#555555'}}>{product.desc}</Text>
-            <Text style={styles.productPrice}>{product.price}</Text>
+            <Text style={styles.productPrice}>${product.price}</Text>
 
             <View style={{flexDirection: "row", marginTop: 10}}>
                 <Image style={{width: 15, height: 15, marginRight: 5}} source={require("../../assets/products/Star.png")} />
