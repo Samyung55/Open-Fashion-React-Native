@@ -5,10 +5,12 @@ import { ProductContext } from "../../contexts/productContext";
 import { ScrollView } from "react-native-gesture-handler";
 import { useRoute } from '@react-navigation/native';
 import Navbar from "../../components/Navbar/Navbar";
+import { useNavigation } from '@react-navigation/native';
 
 const BlogPost = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
 
+    const navigation = useNavigation();
     const [isMenuVisible, setMenuVisible] = useState(false);
     const { blogs } = useContext(ProductContext);
 
