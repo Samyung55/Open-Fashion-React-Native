@@ -8,7 +8,7 @@ import { FlatList, ScrollView } from "react-native-gesture-handler";
 import { ImageBackground } from "react-native";
 
 
-const BlogCard = ({ navigation }) => {
+const BlogCard = () => {
   const [fontLoaded, setFontLoaded] = useState(false);
   const { blogs, setBlogs } = useContext(ProductContext);
   const [selectedItem, setSelectedItem] = useState(1);
