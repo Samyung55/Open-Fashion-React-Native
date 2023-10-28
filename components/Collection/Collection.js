@@ -62,7 +62,7 @@ const Collection = () => {
                        <View style={styles.productColumn}>
                     <Image source={product.image} style={styles.productImage} />
                     <Text style={styles.productName}>{product.desc}</Text>
-                    <Text style={styles.price}>{product.price}</Text>
+                    <Text style={styles.price}>${product.price}</Text>
                 </View>
                     </TouchableOpacity>
                 ))}
