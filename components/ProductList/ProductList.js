@@ -183,7 +183,10 @@ const handleMenuItemClick = (item) => {
           >
             <Text style={styles.size}>L</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity>
                 <Image style={{width: 22, height: 20, marginLeft: 50, alignSelf: "center"}} source={require("../../assets/products/Union.png")} />
+          </TouchableOpacity>
             </View>
         </View>
         
