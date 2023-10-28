@@ -19,7 +19,7 @@ const SingleForYou = () => {
   const navigation = useNavigation();
   const { dispatch: cartDispatch } = useCartContext();
 
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   
   const handleSizeSelection = (size) => {
     setSelectedSize(size);
@@ -109,7 +109,7 @@ const SingleForYou = () => {
     </View>
     <View style={{ marginLeft: 20, marginBottom: 20 }}>
     <Text style={{ fontFamily: "TenorSans", fontSize: 16, marginTop: 10  }}>{selectedProduct.desc}</Text>
-    <Text style={{ fontFamily: "TenorSans", fontSize: 18, marginTop: 10, color: "#DD8560"  }}>{selectedProduct.price}</Text>
+    <Text style={{ fontFamily: "TenorSans", fontSize: 18, marginTop: 10, color: "#DD8560"  }}>${selectedProduct.price}</Text>
     </View>
 
     <View style={{ flexDirection: "row", marginTop: -10, marginBottom: 30 }}>
